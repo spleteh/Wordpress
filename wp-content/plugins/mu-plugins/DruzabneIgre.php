@@ -16,7 +16,7 @@ add_action('init', 'register_bg', 1);
 function register_bg() { 
  	$labels = array( 
 		'name' => _x('Družabne igre', 'Družabne igre'),
-		'singular_name' => _x('druzabneigre', 'Družabne igre'),
+		'singular_name' => _x('Družabne igre', 'Družabne igre'),
 		'add_new' => _x('Dodaj novo igro', 'boardgame'),
 		'add_new_item' => __('Dodaj novo igro'),
 		'edit_item' => __('Uredi igro'),
@@ -32,7 +32,7 @@ function register_bg() {
 		'hierarchical' => false, 
 		'menu_position' => 5, 
 		'has_archive' => 'resources', 
-		'supports' => array('title','editor','comments','thumbnail','custom-fields'),
+		'supports' => array('title','editor','comments','thumbnail','custom-fields','author'),
 	);
 	register_post_type( 'boardgame', $args ); 
 }
@@ -126,6 +126,71 @@ register_taxonomy(
 		'labels' => $labels_zvrsti
 		)
 	);
+	
+	// Add to admin_init function
+add_filter('manage_edit-boardgame_columns', 'add_new_boardgame_columns');
+
+function add_new_boardgame_columns($gallery_columns) {
+		$new_columns['cb'] = '<input type="checkbox" />';
+
+		$new_columns['title'] = _x('Družabna igra', 'column name');
+		$new_columns['steviloigralcev'] = __('Število igralcev');
+		$new_columns['author'] = __('Author');
+		$new_columns['zalozniki'] = __('Založniki');
+ 
+		$new_columns['categories'] = __('Categories');
+		$new_columns['tags'] = __('Tags');
+		$new_columns['comments'] = __('Komentarji');
+ 
+		$new_columns['date'] = _x('Date', 'column name');
+ 
+		return $new_columns;
+	}	
+	
+	add_action( 'manage_boardgame_posts_custom_column', 'devpress_manage_boardgame_columns', 10, 2 );
+
+function devpress_manage_boardgame_columns( $column, $post_id ) {
+	global $post;
+
+	switch( $column ) {
+
+		case 'steviloigralcev' :
+			$steviloigralcev = get_post_meta( $post_id, 'steviloigralcev', true );
+			if ( empty( $steviloigralcev ) )
+				echo __( 'Neznano' );
+			else
+				printf( __( '%s' ), $steviloigralcev );
+			break;
+			
+		
+
+
+		default :
+			break;
+	}
+}
+	
+/*	
+add_filter( 'manage_edit-boardgame_columns', 'devpress_edit_boardgame_columns' ) ;	
+	// Change the columns for the edit CPT screen
+function devpress_edit_boardgame_columns( $cols ) {
+  $cols = array(
+    'cb'       => '<input type="checkbox" />',
+    'naslov'      => __( 'Naslov'),
+	'steviloigralcev' => __( 'Število igralcev'),
+	'cas'     => __( 'Čas igranja'),
+    'starost'     => __( 'Starost'),
+    'zvrst' => __( 'Zvrst'),
+    'zaloznik'     => __( 'Založnik'),
+	'jezik'     => __( 'Jezik'),
+	'komentarji'     => __( 'Komentarji'),
+	'datum'     => __( 'Datum'),
+  );
+  return $cols;
+}
+
+*/
+
 
 
 ?>

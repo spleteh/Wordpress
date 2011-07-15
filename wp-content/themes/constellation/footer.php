@@ -8,10 +8,12 @@
 		</nav>
 	</footer>		
 	<?php wp_footer(); ?>
+	</div>
 	<script type="text/javascript">
 	/* <![CDATA[ */
 		jQuery('#sidebar .widget:nth-child(even)').css('margin-right', 0);
 	/* ]]> */
 	</script>
+	
 </body>
 </html>

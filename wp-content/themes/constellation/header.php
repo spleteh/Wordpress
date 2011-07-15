@@ -26,8 +26,8 @@
 <!--[if IE 9 ]><body class="ie9 <?php echo $body_classes; ?>"><![endif]-->
 <!--[if (gt IE 9)|!(IE)]><!-->
 
-<body class="<?php echo $body_classes; ?>"><!--<![endif]-->
-
+<body> <!--<![endif]-->
+<div id="wrapper" class="<?php echo $body_classes; ?>"><!--<![endif]-->
 <?php include ('panel.php') ?>
 <header id="header" role="banner">
 	<?php if (is_home() || is_front_page()) : ?>
