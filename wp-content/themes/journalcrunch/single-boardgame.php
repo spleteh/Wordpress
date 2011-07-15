@@ -14,7 +14,37 @@
 					 <?php the_time('M j, Y') ?> od <?php the_author_posts_link()?>&nbsp;&nbsp;&nbsp;<img src="<?php bloginfo('template_directory'); ?>/images/ico_post_comments.png" alt="" /> <?php comments_popup_link('No Comments', '1 Comment ', '% Comments'); ?><br/><img src="<?php bloginfo('template_directory'); ?>/images/ico_post_date.png" alt="" /> Objavljeno pod: <?php the_category(', ') ?>
 					
 					</div>
-					
+					<div class="meta-data">
+
+					<h3>Osnovni podatki: </h3>
+					<ul class="post-meta">
+						<li>Število igralcev: <?php echo meta('stevilo_igralcev'); ?></li>
+						<li>Čas igranja: <?php echo meta('Cas_igranja'); ?></li>
+						<li>Starost: <?php echo meta('Starost'); ?></li>
+						<li>Leto izdaje: <?php echo meta('Leto_izdaje'); ?></li>
+						<li>Založnik:  <?php echo meta('Zaloznik'); ?></li>
+						<li>Vrsta igre: <?php echo meta('Vrsta_igre'); ?></li>
+						<li>Jezik: <?php 
+						$terms = get_the_terms( $post->ID, 'jeziki' );
+			if ( !empty( $terms ) ) {
+				$out = array();
+				foreach ( $terms as $term ) {
+					$out[] = sprintf( 
+						
+						esc_html( sanitize_term_field( 'name', $term->name, $term->term_id, 'jeziki', 'display' ) )
+					);
+				}
+				echo join( ', ', $out );
+			} ?></li>
+					</ul>
+
+					<?php 
+					/* $category = get_the_category();
+								if($category[0]->cat_ID >=5 && $category[0]->cat_ID <= 7 ) 
+								{the_meta();} */?>
+								
+								
+					</div>
 					<?php
 					if(has_post_thumbnail()) {
 							//the_post_thumbnail();?>

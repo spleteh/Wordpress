@@ -4,6 +4,9 @@
 <meta charset=<?php bloginfo('charset'); ?>" />
 <meta name="keywords" content="<?php echo get_option('bg_keywords'); ?>" />
 <meta name="description" content="<?php echo get_option('bg_description'); ?>" />
+<?php if ( file_exists(TEMPLATEPATH .'/favicon.ico') ) : ?>
+<link rel="shortcut icon" href="<?php bloginfo('template_url'); ?>/favicon.ico">
+<?php endif; ?>
 <title><?php
 	/*
 	 * Print the <title> tag based on what is being viewed.
