@@ -5,14 +5,14 @@
 ################################################################################
 
 function init_scripts() {
-    wp_deregister_script( 'jquery' );
+
     wp_deregister_script( 'comment-reply' );
     // Register Scripts
-    wp_register_script( 'jquery', 'http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js');
+
     wp_register_script( 'comment-reply', get_bloginfo('url') . '/wp-includes/js/comment-reply.js?ver=20090102');
     // Queue Scripts
     wp_enqueue_script('modernizr', get_bloginfo('template_url') . '/js/modernizr-1.5.min.js', '', 1.5, false);
-    wp_enqueue_script('jquery', 'http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js', '', '1.4.2', true);
+
     
     if ( get_option( 'thread_comments' ) ) wp_enqueue_script( 'comment-reply',  get_bloginfo('url') . '/wp-includes/js/comment-reply.js?ver=20090102', 'jquery', '', true );
     
