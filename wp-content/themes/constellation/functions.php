@@ -1,45 +1,5 @@
 <?php
 
-################################################################################
-//THEME OPTIONS
-################################################################################
-add_action('admin_menu', 'boardgame_theme_page');
-function boardgame_theme_page ()
-{
-	if ( count($_POST) > 0 && isset($_POST['journal_settings']) )
-	{
-		$options = array ('contact_email','contact_text','twitter_user','latest_tweet','facebook_link','keywords','description','analytics','copyright','slider','slider_effect','slider_slices','slider_animation_speed','slider_pause_time','slider_caption_opacity','featured_posts','home_posts', 'box_model');
-		
-		foreach ( $options as $opt )
-		{
-			delete_option ( 'boardgame_'.$opt, $_POST[$opt] );
-			add_option ( 'boardgame_'.$opt, $_POST[$opt] );	
-		}			
-		 
-	}
-	add_menu_page(__('BoardGame Options'), __('BoardGame Options'), 'edit_themes', basename(__FILE__), 'boardgame_settings');
-	add_submenu_page(__('BoardGame Options'), __('BoardGame Options'), 'edit_themes', basename(__FILE__), 'boardgame_settings');
-}
-
-
-
-
-
-
-
-
-
-################################################################################
-//
-################################################################################
-?>
-<?php
-
-################################################################################
-// THEME Default
-################################################################################
-
-
 if (is_admin()) include_once("includes/theme-config.php");
 
 include_once("includes/theme-enqueue.php");
@@ -75,7 +35,7 @@ add_theme_support( 'nav-menus' );
 // add_image_size( 'single-post-thumbnail', 160, 100, true );
 
 register_nav_menus( array(
-	'primary' => __( 'Primary Navigation' ),
+	'top_menu' => __( 'Top menu' ),
 ) );
 
 ################################################################################

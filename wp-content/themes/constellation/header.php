@@ -1,9 +1,23 @@
-<!doctype html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="en" class="no-js">
 <head>
 <meta charset="<?php bloginfo('charset'); ?>">
+<meta name="keywords" content="<?php echo get_option('keywords'); ?>" />
+<meta name="description" content="<?php echo get_option('description'); ?>" />
 <!--[if IE]><![endif]-->
-<title><?php wp_title( '|', true, 'right' ); ?> <?php bloginfo('name'); ?></title>
+<title><?php
+
+	global $page, $paged;
+	wp_title( '|', true, 'right' );
+	// Dodaj ime strani
+	bloginfo( 'name' );
+	// Dodaj opis strani na domaèo stran
+	$site_description = get_bloginfo( 'description', 'display' );
+	if ( $site_description && ( is_home() || is_front_page() ) )
+		echo " | $site_description";
+
+	?></title>
+	
 <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;">
 <?php if ( file_exists(TEMPLATEPATH .'/favicon.ico') ) : ?>
 <link rel="shortcut icon" href="<?php bloginfo('template_url'); ?>/favicon.ico">
