@@ -35,7 +35,7 @@ add_theme_support( 'nav-menus' );
 // add_image_size( 'single-post-thumbnail', 160, 100, true );
 
 register_nav_menus( array(
-	'top_menu' => __( 'Top menu' ),
+	'primary' => __( 'Primary Navigation' ),
 ) );
 
 ################################################################################

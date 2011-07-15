@@ -113,7 +113,14 @@ Template Name: Homepage
 					query_posts('showposts=6&tag=homepost');
 				}
 			}
-		 
+		 $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+		 query_posts( array(
+		'post_type' => array(
+					'post',
+					'boardgame'
+				),
+				'paged' => $paged ) // for paging links to work
+			);
 		 if (have_posts()) : while (have_posts()) : the_post(); ?>	
 			<div class="postBox <?php if(($postindex % 3) == 0){ echo 'lastBox';}?>">
 				<div class="postBoxInner">
