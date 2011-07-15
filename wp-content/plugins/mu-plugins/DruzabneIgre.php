@@ -135,11 +135,14 @@ function add_new_boardgame_columns($gallery_columns) {
 
 		$new_columns['title'] = _x('Družabna igra', 'column name');
 		$new_columns['steviloigralcev'] = __('Število igralcev');
-		$new_columns['author'] = __('Author');
+		$new_columns['casigranja'] = __('Čas igranja');
+		$new_columns['starost'] = __('Starost');
+		$new_columns['letoizdaje'] = __('Leto izdaje');
+		$new_columns['jeziki'] = __('Jeziki');
+		
 		$new_columns['zalozniki'] = __('Založniki');
- 
-		$new_columns['categories'] = __('Categories');
-		$new_columns['tags'] = __('Tags');
+
+		$new_columns['author'] = __('Author');
 		$new_columns['comments'] = __('Komentarji');
  
 		$new_columns['date'] = _x('Date', 'column name');
@@ -162,12 +165,119 @@ function devpress_manage_boardgame_columns( $column, $post_id ) {
 				printf( __( '%s' ), $steviloigralcev );
 			break;
 			
+		case 'casigranja' :
+			$casigranja = get_post_meta( $post_id, 'casigranja', true );
+			if ( empty( $casigranja ) )
+				echo __( 'Neznano' );
+			else
+				printf( __( '%s minut' ), $casigranja );
+			break;
+			
+		case 'starost' :
+			$starost = get_post_meta( $post_id, 'starost', true );
+			if ( empty( $starost ) )
+				echo __( 'Neznano' );
+			else
+				printf( __( '%s+' ), $starost );
+			break;
+			
+		case 'letoizdaje' :
+			$letoizdaje = get_post_meta( $post_id, 'letoizdaje', true );
+			if ( empty( $letoizdaje ) )
+				echo __( 'Neznano' );
+			else
+				printf( __( '%s' ), $letoizdaje );
+			break;
+			
+		case 'jeziki' :
+			$terms = get_the_terms( $post_id, 'jeziki' );
+			if ( !empty( $terms ) ) {
+				$out = array();
+				foreach ( $terms as $term ) {
+					$out[] = sprintf( '<a href="%s">%s</a>',
+						esc_url( add_query_arg( array( 'post_type' => $post->post_type, 'jeziki' => $term->slug ), 'edit.php' ) ),
+						esc_html( sanitize_term_field( 'name', $term->name, $term->term_id, 'jeziki', 'display' ) )
+					);
+				}
+				echo join( ', ', $out );
+			}
+			else {
+				_e( 'Ni jezikov' );
+			}
+
+			break;		
+	
+		case 'zalozniki' :
+			$terms = get_the_terms( $post_id, 'zalozniki' );
+			if ( !empty( $terms ) ) {
+				$out = array();
+				foreach ( $terms as $term ) {
+					$out[] = sprintf( '<a href="%s">%s</a>',
+						esc_url( add_query_arg( array( 'post_type' => $post->post_type, 'zalozniki' => $term->slug ), 'edit.php' ) ),
+						esc_html( sanitize_term_field( 'name', $term->name, $term->term_id, 'zalozniki', 'display' ) )
+					);
+				}
+				echo join( ', ', $out );
+			}
+			else {
+				_e( 'Ni založnikov' );
+			}
+
+			break;		
 		
 
 
 		default :
 			break;
 	}
+}
+
+add_filter( 'manage_edit-boardgame_sortable_columns', 'devpress_boardgame_sortable_steviloigralcev_columns' );
+
+function devpress_boardgame_sortable_steviloigralcev_columns( $columns ) {
+
+	$columns['steviloigralcev'] = 'steviloigralcev';
+	return $columns;
+}
+
+add_filter( 'manage_edit-boardgame_sortable_columns', 'devpress_boardgame_sortable_casigranja_columns' );
+
+function devpress_boardgame_sortable_casigranja_columns( $columns ) {
+
+	$columns['casigranja'] = 'casigranja';
+	return $columns;
+}
+
+add_filter( 'manage_edit-boardgame_sortable_columns', 'devpress_boardgame_sortable_starost_columns' );
+
+function devpress_boardgame_sortable_starost_columns( $columns ) {
+
+	$columns['starost'] = 'starost';
+	return $columns;
+}
+
+add_filter( 'manage_edit-boardgame_sortable_columns', 'devpress_boardgame_sortable_letoizdaje_columns' );
+
+function devpress_boardgame_sortable_letoizdaje_columns( $columns ) {
+
+	$columns['letoizdaje'] = 'letoizdaje';
+	return $columns;
+}
+
+add_filter( 'manage_edit-boardgame_sortable_columns', 'devpress_boardgame_sortable_jeziki_columns' );
+
+function devpress_boardgame_sortable_jeziki_columns( $columns ) {
+
+	$columns['jeziki'] = 'jeziki';
+	return $columns;
+}
+
+add_filter( 'manage_edit-boardgame_sortable_columns', 'devpress_boardgame_sortable_zalozniki_columns' );
+
+function devpress_boardgame_sortable_zalozniki_columns( $columns ) {
+
+	$columns['zalozniki'] = 'zalozniki';
+	return $columns;
 }
 	
 /*	
