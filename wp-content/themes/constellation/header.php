@@ -24,7 +24,9 @@
 <?php endif; ?><?php if ( file_exists(TEMPLATEPATH .'/apple-touch-icon.png') ) : ?>
 <link rel="apple-touch-icon" href="<?php bloginfo('template_url'); ?>/apple-touch-icon.png">
 <?php endif; ?><link rel="stylesheet" href="<?php bloginfo( 'stylesheet_url' ); ?>">
+<?php wp_enqueue_script("jquery"); ?>
 <?php wp_head(); ?>
+
 </head><?php $body_classes = join( ' ', get_body_class() ); ?>
 <!--[if lt IE 7 ]><body class="ie6 <?php echo $body_classes; ?>"><![endif]-->
 <!--[if IE 7 ]><body class="ie7 <?php echo $body_classes; ?>"><![endif]-->
@@ -40,6 +42,8 @@
 	<?php endif; ?>
 </header>
 
-<nav id="main-nav" role="navigation"><?php wp_nav_menu( array( 'container_class' => 'menu-header', 'theme_location' => 'primary' ) ); ?></nav>
+
+
+<nav id="main-nav" role="navigation"><?php wp_nav_menu( array( 'container_class' => 'menu-header', 'theme_location' => 'top_menu' ) ); ?></nav>
 	
 <div id="main" role="main">
