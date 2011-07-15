@@ -60,17 +60,17 @@
 <p><label for="email">Mail (will not be published) <?php if ($req) echo "(required)"; ?></label>
 <input type="text" name="email" id="email" value="<?php echo $comment_author_email; ?>" size="22" tabindex="2" <?php if ($req) echo "aria-required='true'"; ?> />
 </p>
-
+<?php /*
 <p><label for="url">Website</label>
 <input type="text" name="url" id="url" value="<?php echo $comment_author_url; ?>" size="22" tabindex="3" />
-</p>
+</p> */ ?>
 
 <?php endif; ?>
 
 
 <p><label for="comment">Comment</label>
 <textarea name="comment" id="comment" cols="100%" rows="10" tabindex="4"></textarea></p>
-<p><small><strong>XHTML:</strong> You can use these tags: <code><?php echo allowed_tags(); ?></code></small></p>
+
 <p><input name="submit" type="submit" id="submit" tabindex="5" value="POST COMMENT" />
 <?php comment_id_fields(); ?>
 </p>

@@ -11,10 +11,8 @@
 		<div id="copyright">
 			<?php if (get_option('journal_copyright') <> ""){
 				echo stripslashes(stripslashes(get_option('journal_copyright')));
-				}else{
-					echo 'Just go to Theme Options Page and edit copyright text';
 				}?> 
-				<div id="site5bottom"><a href="http://www.site5.com/resellers/web/">cPanel Reseller Hosting</a></div>
+				<div id="site5bottom"><a href="http://www.spleteh.si/">Izdelava strani: Spleteh.si</a></div>
 		</div>
 		<!-- END COPYRIGHT -->	
 		</div>

@@ -134,12 +134,14 @@ function add_new_boardgame_columns($gallery_columns) {
 		$new_columns['cb'] = '<input type="checkbox" />';
 
 		$new_columns['title'] = _x('Družabna igra', 'column name');
+		$new_columns['thumbnail'] = __('Slika');
+
 		$new_columns['steviloigralcev'] = __('Število igralcev');
 		$new_columns['casigranja'] = __('Čas igranja');
 		$new_columns['starost'] = __('Starost');
 		$new_columns['letoizdaje'] = __('Leto izdaje');
 		$new_columns['jeziki'] = __('Jeziki');
-		
+
 		$new_columns['zalozniki'] = __('Založniki');
 
 		$new_columns['author'] = __('Author');
@@ -280,26 +282,46 @@ function devpress_boardgame_sortable_zalozniki_columns( $columns ) {
 	return $columns;
 }
 	
-/*	
-add_filter( 'manage_edit-boardgame_columns', 'devpress_edit_boardgame_columns' ) ;	
-	// Change the columns for the edit CPT screen
-function devpress_edit_boardgame_columns( $cols ) {
-  $cols = array(
-    'cb'       => '<input type="checkbox" />',
-    'naslov'      => __( 'Naslov'),
-	'steviloigralcev' => __( 'Število igralcev'),
-	'cas'     => __( 'Čas igranja'),
-    'starost'     => __( 'Starost'),
-    'zvrst' => __( 'Zvrst'),
-    'zaloznik'     => __( 'Založnik'),
-	'jezik'     => __( 'Jezik'),
-	'komentarji'     => __( 'Komentarji'),
-	'datum'     => __( 'Datum'),
-  );
-  return $cols;
-}
 
-*/
+
+function fb_AddThumbColumn($cols) { 
+		$cols['thumbnail'] = __('Thumbnail'); 
+		return $cols;
+	}
+ 
+	function fb_AddThumbValue($column_name, $post_id) {
+ 
+			$width = (int) 150;
+			$height = (int) 100;
+ 
+ 
+			if ( 'thumbnail' == $column_name ) {
+				// thumbnail of WP 2.9
+				$thumbnail_id = get_post_meta( $post_id, '_thumbnail_id', true );
+				// image from gallery
+				$attachments = get_children( array('post_parent' => $post_id, 'post_type' => 'attachment', 'post_mime_type' => 'image') );
+				if ($thumbnail_id)
+					$thumb = wp_get_attachment_image( $thumbnail_id, array($width, $height), true );
+				elseif ($attachments) {
+					foreach ( $attachments as $attachment_id => $attachment ) {
+						$thumb = wp_get_attachment_image( $attachment_id, array($width, $height), true );
+					}
+				}
+					if ( isset($thumb) && $thumb ) {
+						echo $thumb;
+					} else {
+						echo __('None');
+					}
+			}
+	}
+ 
+	// for posts
+	add_filter( 'manage_posts_columns', 'fb_AddThumbColumn' );
+	add_action( 'manage_posts_custom_column', 'fb_AddThumbValue', 10, 2 );
+ 
+	// for investments
+	add_filter( 'manage_boardgame_columns', 'fb_AddThumbColumn' );
+	add_action( 'manage_boardgame_custom_column', 'fb_AddThumbValue', 10, 2 );
 
 
 

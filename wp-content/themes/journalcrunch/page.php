@@ -1,5 +1,7 @@
 <?php get_header(); ?>
 
+
+
 <!-- Begin #colleft -->
 			<div id="colLeft">
 			<h1><?php the_title(); ?></h1>	

@@ -1,5 +1,7 @@
 <?php
 
+
+
 /*******************************
  MENUS SUPPORT
 ********************************/
@@ -17,20 +19,14 @@ if ( function_exists( 'wp_nav_menu' ) ){
 	}
 }
 
-/* CallBack functions for menus in case of earlier than 3.0 Wordpress version or if no menu is set yet*/
 
-function primarymenu(){ ?>
-			<div id="topMenu" class="ddsmoothmenu">
-				<ul><li><div> Go to Admin > Appearance > Menus to set up the menu. You need to run WP 3.0+ for custom menus to work.</div></li></ul>
-			</div>
-<?php }
 
 /*******************************
  THUMBNAIL SUPPORT
 ********************************/
 
 add_theme_support( 'post-thumbnails' );
-set_post_thumbnail_size( 255, 90, false );
+set_post_thumbnail_size( 255, 150, false );
 add_image_size('featured-post-thumbnail',430,280,true);
 add_image_size('slider-thumbnail',940,370,true);
 
@@ -68,7 +64,7 @@ function wpe_excerptlength_featured($length) {
     return 40;
 }
 function wpe_excerptlength_index($length) {
-    return 20;
+    return 40;
 }
 
 function wpe_excerpt($length_callback='', $more_callback='') {
@@ -959,5 +955,65 @@ function strhex($string) {
   $hexstr = unpack('H*', $string);
   return array_shift($hexstr);
 }
+/*******************************
+ CONTENT
+********************************/
+
+add_shortcode( 'visitor', 'visitor_check_shortcode' );
+
+function visitor_check_shortcode( $atts, $content = null ) {
+	 if ( ( !is_user_logged_in() && !is_null( $content ) ) || is_feed() )
+		return $content;
+	return '';
+}
+
+add_shortcode( 'member', 'member_check_shortcode' );
+
+function member_check_shortcode( $atts, $content = null ) {
+	 if ( is_user_logged_in() && !is_null( $content ) && !is_feed() )
+		return $content;
+	return '';
+}
+
+
+
  
+
+
+//Custom Theme Settings
+add_action('admin_menu', 'add_gcf_interface');
+
+function add_gcf_interface() {
+	add_options_page('Global Custom Fields', 'Global Custom Fields', '8', 'functions', 'editglobalcustomfields');
+}
+
+function editglobalcustomfields() {
+	?>
+	<div class='wrap'>
+	<h2>Global Custom Fields</h2>
+	<form method="post" action="options.php">
+	<?php wp_nonce_field('update-options') ?>
+
+	<p><strong>My Name:</strong><br />
+	<input type="text" name="myname" size="45" value="<?php echo get_option('myname'); ?>" /></p>
+	
+	<p><strong>Amazon ID:</strong><br />
+	<input type="text" name="amazonid" size="45" value="<?php echo get_option('amazonid'); ?>" /></p>
+
+	<p><strong>Today's Featured Website:</strong><br />
+	<input type="text" name="todaysite" size="45" value="<?php echo get_option('todaysite'); ?>" /></p>
+
+	<p><strong>Welcome Text:</strong><br />
+	<textarea name="welcomemessage" cols="100%" rows="7"><?php echo get_option('welcomemessage'); ?></textarea></p>
+
+	<p><input type="submit" name="Submit" value="Update Options" /></p>
+
+	<input type="hidden" name="action" value="update" />
+	<input type="hidden" name="page_options" value="myname,amazonid,todaysite,welcomemessage" />
+
+	</form>
+	</div>
+	<?php
+}
+
 ?>
