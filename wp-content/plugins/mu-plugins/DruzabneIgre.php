@@ -13,9 +13,9 @@
 // Plugin vsebuje:
 // 				- Custom post type Družabne igre (druzabneigre)
 //				- Založnike (brez hirarhije)
-//				- Jeziki (brez hirarhije)
+//				- jezik (brez hirarhije)
 //				- Vrsta igre (z hirarhijo)
-//				- Dodani stolpci (Družabna igra, Slika, Število igralcev, Čas igranja, Starost, Leto izdaje, Jeziki, Založniki,	Vrsta igre,	Avtor, Komentarji, Datum)
+//				- Dodani stolpci (Družabna igra, Slika, Število igralcev, Čas igranja, Starost, Leto izdaje, jezik, Založniki,	Vrsta igre,	Avtor, Komentarji, Datum)
 //				- sortiranje stolpcev
 //              - Meta Box (Osnovni podatki, Opis igre)
 ################################################################################
@@ -60,8 +60,8 @@ function create_druzabneigre_taxonomies()
 {
   // Add new taxonomy, make it hierarchical (like categories)
   $labels = array(
-    'name' => _x( 'Genres', 'taxonomy general name' ),
-    'singular_name' => _x( 'Genre', 'taxonomy singular name' ),
+    'name' => _x( 'Vrsta igre', 'taxonomy general name' ),
+    'singular_name' => _x( 'Vrsta igre', 'taxonomy singular name' ),
     'search_items' =>  __( 'Search Genres' ),
     'all_items' => __( 'All Genres' ),
     'parent_item' => __( 'Parent Genre' ),
@@ -70,21 +70,21 @@ function create_druzabneigre_taxonomies()
     'update_item' => __( 'Update Genre' ),
     'add_new_item' => __( 'Add New Genre' ),
     'new_item_name' => __( 'New Genre Name' ),
-    'menu_name' => __( 'Genre' ),
+    'menu_name' => __( 'Vrsta igre' ),
   ); 	
 
-  register_taxonomy('genre',array('druzabneigre'), array(
+  register_taxonomy('vrsta_igre',array('druzabneigre'), array(
     'hierarchical' => true,
     'labels' => $labels,
     'show_ui' => true,
     'query_var' => true,
-    'rewrite' => array( 'slug' => 'genre' ),
+    'rewrite' => array( 'slug' => 'vrstaigre' ),
   ));
 
   // Add new taxonomy, NOT hierarchical (like tags)
   $labels = array(
-    'name' => _x( 'Writers', 'taxonomy general name' ),
-    'singular_name' => _x( 'Writer', 'taxonomy singular name' ),
+    'name' => _x( 'Založniki', 'taxonomy general name' ),
+    'singular_name' => _x( 'Založnik', 'taxonomy singular name' ),
     'search_items' =>  __( 'Search Writers' ),
     'popular_items' => __( 'Popular Writers' ),
     'all_items' => __( 'All Writers' ),
@@ -97,15 +97,41 @@ function create_druzabneigre_taxonomies()
     'separate_items_with_commas' => __( 'Separate writers with commas' ),
     'add_or_remove_items' => __( 'Add or remove writers' ),
     'choose_from_most_used' => __( 'Choose from the most used writers' ),
-    'menu_name' => __( 'Writers' ),
+    'menu_name' => __( 'Založniki' ),
   ); 
 
-  register_taxonomy('writer','druzabneigre',array(
+  register_taxonomy('zaloznik','druzabneigre',array(
     'hierarchical' => false,
     'labels' => $labels,
     'show_ui' => true,
     'query_var' => true,
-    'rewrite' => array( 'slug' => 'writer' ),
+    'rewrite' => array( 'slug' => 'zaloznik' ),
+  ));
+  
+   $labels = array(
+    'name' => _x( 'Jeziki', 'taxonomy general name' ),
+    'singular_name' => _x( 'Jezik', 'taxonomy singular name' ),
+    'search_items' =>  __( 'Search Writers' ),
+    'popular_items' => __( 'Popular Writers' ),
+    'all_items' => __( 'All Writers' ),
+    'parent_item' => null,
+    'parent_item_colon' => null,
+    'edit_item' => __( 'Edit Writer' ), 
+    'update_item' => __( 'Update Writer' ),
+    'add_new_item' => __( 'Add New Writer' ),
+    'new_item_name' => __( 'New Writer Name' ),
+    'separate_items_with_commas' => __( 'Separate writers with commas' ),
+    'add_or_remove_items' => __( 'Add or remove writers' ),
+    'choose_from_most_used' => __( 'Choose from the most used writers' ),
+    'menu_name' => __( 'Jeziki' ),
+  ); 
+
+  register_taxonomy('jezik','druzabneigre',array(
+    'hierarchical' => false,
+    'labels' => $labels,
+    'show_ui' => true,
+    'query_var' => true,
+    'rewrite' => array( 'slug' => 'jezik' ),
   ));
 }
 
@@ -128,10 +154,10 @@ function add_new_druzabneigre_columns($druzabneigre_columns) {
 		$new_columns['cas_igranja'] = __('Čas igranja');
 		$new_columns['starost'] = __('Starost');
 		$new_columns['leto_izdaje'] = __('Leto izdaje');
-		$new_columns['jeziki'] = __('Jeziki');
+		$new_columns['jezik'] = __('jezik');
 
-		$new_columns['zalozniki'] = __('Založniki');
-		$new_columns['vrste_iger'] = __('Vrsta igre');
+		$new_columns['zaloznik'] = __('Založniki');
+		$new_columns['vrsta_igre'] = __('Vrsta igre');
 
 		$new_columns['author'] = __('Avtor');
 		$new_columns['comments'] = __('Komentarji');
@@ -180,14 +206,14 @@ function devpress_manage_druzabneigre_columns( $column, $post_id ) {
 				printf( __( '%s' ), $letoizdaje );
 			break;
 			
-		case 'jeziki' :
-			$terms = get_the_terms( $post_id, 'jeziki' );
+		case 'jezik' :
+			$terms = get_the_terms( $post_id, 'jezik' );
 			if ( !empty( $terms ) ) {
 				$out = array();
 				foreach ( $terms as $term ) {
 					$out[] = sprintf( '<a href="%s">%s</a>',
-						esc_url( add_query_arg( array( 'post_type' => $post->post_type, 'jeziki' => $term->slug ), 'edit.php' ) ),
-						esc_html( sanitize_term_field( 'name', $term->name, $term->term_id, 'jeziki', 'display' ) )
+						esc_url( add_query_arg( array( 'post_type' => $post->post_type, 'jezik' => $term->slug ), 'edit.php' ) ),
+						esc_html( sanitize_term_field( 'name', $term->name, $term->term_id, 'jezik', 'display' ) )
 					);
 				}
 				echo join( ', ', $out );
@@ -198,14 +224,14 @@ function devpress_manage_druzabneigre_columns( $column, $post_id ) {
 
 			break;		
 	
-		case 'zalozniki' :
-			$terms = get_the_terms( $post_id, 'zalozniki' );
+		case 'zaloznik' :
+			$terms = get_the_terms( $post_id, 'zaloznik' );
 			if ( !empty( $terms ) ) {
 				$out = array();
 				foreach ( $terms as $term ) {
 					$out[] = sprintf( '<a href="%s">%s</a>',
-						esc_url( add_query_arg( array( 'post_type' => $post->post_type, 'zalozniki' => $term->slug ), 'edit.php' ) ),
-						esc_html( sanitize_term_field( 'name', $term->name, $term->term_id, 'zalozniki', 'display' ) )
+						esc_url( add_query_arg( array( 'post_type' => $post->post_type, 'zaloznik' => $term->slug ), 'edit.php' ) ),
+						esc_html( sanitize_term_field( 'name', $term->name, $term->term_id, 'zaloznik', 'display' ) )
 					);
 				}
 				echo join( ', ', $out );
@@ -216,14 +242,14 @@ function devpress_manage_druzabneigre_columns( $column, $post_id ) {
 
 			break;	
 			
-		case 'vrste_iger' :
-			$terms = get_the_terms( $post_id, 'vrste_iger' );
+		case 'vrsta_igre' :
+			$terms = get_the_terms( $post_id, 'vrsta_igre' );
 			if ( !empty( $terms ) ) {
 				$out = array();
 				foreach ( $terms as $term ) {
 					$out[] = sprintf( '<a href="%s">%s</a>',
-						esc_url( add_query_arg( array( 'post_type' => $post->post_type, 'vrste_iger' => $term->slug ), 'edit.php' ) ),
-						esc_html( sanitize_term_field( 'name', $term->name, $term->term_id, 'vrste_iger', 'display' ) )
+						esc_url( add_query_arg( array( 'post_type' => $post->post_type, 'vrsta_igre' => $term->slug ), 'edit.php' ) ),
+						esc_html( sanitize_term_field( 'name', $term->name, $term->term_id, 'vrsta_igre', 'display' ) )
 					);
 				}
 				echo join( ', ', $out );
@@ -315,11 +341,11 @@ function devpress_druzabneigre_sortable_letoizdaje_columns( $columns ) {
 	return $columns;
 }
 
-add_filter( 'manage_edit-druzabneigre_sortable_columns', 'devpress_druzabneigre_sortable_jeziki_columns' );
+add_filter( 'manage_edit-druzabneigre_sortable_columns', 'devpress_druzabneigre_sortable_jezik_columns' );
 
-function devpress_druzabneigre_sortable_jeziki_columns( $columns ) {
+function devpress_druzabneigre_sortable_jezik_columns( $columns ) {
 
-	$columns['jeziki'] = 'jeziki';
+	$columns['jezik'] = 'jezik';
 	return $columns;
 }
 
@@ -327,7 +353,7 @@ add_filter( 'manage_edit-druzabneigre_sortable_columns', 'devpress_druzabneigre_
 
 function devpress_druzabneigre_sortable_zalozniki_columns( $columns ) {
 
-	$columns['zalozniki'] = 'zalozniki';
+	$columns['zaloznik'] = 'zaloznik';
 	return $columns;
 }
 
@@ -335,7 +361,7 @@ add_filter( 'manage_edit-druzabneigre_sortable_columns', 'devpress_druzabneigre_
 
 function devpress_druzabneigre_sortable_vrste_iger_columns( $columns ) {
 
-	$columns['vrste_iger'] = 'vrste_iger';
+	$columns['vrsta_igre'] = 'vrsta_igre';
 	return $columns;
 }
 
