@@ -81,7 +81,7 @@ body {
 }
 
 header {
-	margin-top:50px;
+	margin-top:5px;
 }
 
 #wrapper{
@@ -118,6 +118,36 @@ header {
 
 #main-nav ul {margin:0 auto; padding:1em 0; zoom:1; width:1224px; }
 
+
+#main-content .postBox {
+	float:left;
+	margin:0 42px 30px 0;
+	width:290px;
+	background:url(images/box_botttom_shadow.png) 50% 100% no-repeat;
+	padding-bottom:5px;
+	position:relative;
+	text-shadow:none;
+}
+
+
+#main-content .lastBox {
+	margin-right:0;
+}
+
+#main-content .postBoxInner{
+	border:8px solid #F7F9F9;
+	background:#F7F9F9;
+	-moz-border-radius:8px;
+    -webkit-border-radius:8px;
+	height:450px;
+	font-size:12px;
+}
+
+#main-content  .postBoxInner:hover {
+	background:#FFF;
+	border:8px solid #EEF2F2;
+}
+
 /*--[ Anchors ]--------------------------------------------------------------------------------*/
 
 a { color: #3777AF; text-decoration: none; }
@@ -146,7 +176,7 @@ h4 { font-size:1.25em; line-height: 1.2em; margin-top:1.2em; } /* 20px equiv */
 h5 { font-size:1.125em; line-height: 1.3333em; margin-top:1.3333em; } /* 18px equiv */
 h6 { font-size:0.875em; line-height: 1.7143em; margin-top:1.7143em; text-transform: uppercase; } /* 14px equiv */
 
-#logo {font-size:2em; line-height: 1em; margin: 0 0 1em; padding: 0; font-weight: bold; letter-spacing: -.05em; font-family:AgentRed;}
+#logo {font-size:2em; line-height: 1em; margin: 1em 0 1em; padding: 0; font-weight: bold; letter-spacing: -.05em; font-family:AgentRed;}
 
 p, ul, ol, dl, blockquote, hr, pre, table, fieldset, article, article footer, nav {
 	margin: 0 0 1.5em 0;

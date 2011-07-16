@@ -9,16 +9,17 @@
 				'paged' => $paged ) // for paging links to work
 			);
 if (have_posts()) : while (have_posts()) : the_post(); ?>
-
+			<div class="postBox <?php if(($postindex % 2) == 0){ echo 'lastBox';}?>">
+				<div class="postBoxInner">
 						<article <?php post_class() ?> id="post-<?php the_ID(); ?>">
 							<header>
+							<center>
 							<?php
-					if(has_post_thumbnail()) {
+						if(has_post_thumbnail()) {
 							?>
 							<a href="<?php the_permalink() ?>" ><img src="<?php bloginfo('template_directory'); ?>/timthumb.php?src=<?php echo get_image_path($post->ID); ?>&h=255&q=100"  alt="<?php the_title(); ?>" align="top"></a>
-						<?php } /*else {
-							echo '<img src="'.get_bloginfo("template_url").'/images/nothumb.jpg"  alt="No Thumbnail"/>';
-						}*/?>
+						<?php } ?>
+						</center>
 
 								<h2><a href="<?php the_permalink(); ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
 								<p><time datetime="<?php the_time('Y-m-d')?>">Posted <?php the_time('F jS, Y') ?></time> <span class="author">by <?php the_author() ?></span>. <?php if ( comments_open() ) : ?><a class="comment" href="<?php the_permalink(); ?>#comments"><?php comments_number('0 Comments', '1 Comment', '% Comments'); ?></a><?php endif; ?></p>
@@ -31,7 +32,8 @@ if (have_posts()) : while (have_posts()) : the_post(); ?>
 								<?php the_tags('<span class="tags">Tagged as ', ', ', '</span>'); ?>
 							</footer>
 						</article>
-
+				</div>
+			</div>
 <?php endwhile; else: ?>
 	<p><?php _e('Sorry, no posts matched your criteria.'); ?></p>
 <?php endif; ?>
