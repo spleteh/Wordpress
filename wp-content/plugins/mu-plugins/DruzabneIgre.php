@@ -5,11 +5,24 @@
  * Description: Custom post type za družabne igre
  * Author: Miha Zelnik
  * Author URI: http://spleteh.si
- * Version: 0.1.0
- * Date: 15.7.2011
+ * Version: 1.0.0
+ * Date: 16.7.2011
  */
 
+################################################################################
+// Plugin vsebuje:
+// 				- Custom post type Družabne igre (boardgame)
+//				- Založnike (brez hirarhije)
+//				- Jeziki (brez hirarhije)
+//				- Vrsta igre (z hirarhijo)
+//				- Dodani stolpci (Družabna igra, Slika, Število igralcev, Čas igranja, Starost, Leto izdaje, Jeziki, Založniki,	Vrsta igre,	Avtor, Komentarji, Datum)
+//				- sortiranje stolpcev
+//              - Meta Box (Osnovni podatki, Opis igre)
+################################################################################
 
+################################################################################
+// CUSTOM POST TYPE
+################################################################################
 
 add_action('init', 'register_bg', 1); 
 
@@ -98,32 +111,32 @@ register_taxonomy(
 	);
 
 ################################################################################
-// ZVRST
+// VRSTA IGRE
 ################################################################################	
 	
-	$labels_zvrsti = array(
-	'name' => _x( 'Zvrsti', 'taxonomy general name' ),
-	'singular_name' => _x( 'Zvrst', 'taxonomy singular name' ),
-	'search_items' =>  __( 'Išči zvrst' ),
-	'all_items' => __( 'Vse zvrsti' ),
+	$labels_vrsta = array(
+	'name' => _x( 'Vrsta igre', 'taxonomy general name' ),
+	'singular_name' => _x( 'Vrsta igre', 'taxonomy singular name' ),
+	'search_items' =>  __( 'Išči vrsto' ),
+	'all_items' => __( 'Vse vrste iger' ),
 	'parent_item' => __( 'Parent Topic' ),
 	'parent_item_colon' => __( 'Parent Topic:' ),
-	'edit_item' => __( 'Uredi zvrst' ),
-	'update_item' => __( 'Shrani zvrst' ),
-	'add_new_item' => __( 'Dodaj novo zvrst' ),
-	'new_item_name' => __( 'Novo ime zvrsti' ),
+	'edit_item' => __( 'Uredi vrsto' ),
+	'update_item' => __( 'Shrani vrsto' ),
+	'add_new_item' => __( 'Dodaj novo vrsto' ),
+	'new_item_name' => __( 'Novo ime vrste iger' ),
 ); 
 
 register_taxonomy(
-	'zvrsti', // The name of the custom taxonomy
+	'vrste_iger', // The name of the custom taxonomy
 	array( 'boardgame' ), // Associate it with our custom post type
 	array(
 		'hierarchical' => true,
 		'rewrite' => array(
-			'slug' => 'zvrst', // Use "topic" instead of "topics" in permalinks
+			'slug' => 'vrsta', // Use "topic" instead of "topics" in permalinks
 			'hierarchical' => true // Allows sub-topics to appear in permalinks
 			),
-		'labels' => $labels_zvrsti
+		'labels' => $labels_vrsta
 		)
 	);
 	
@@ -147,11 +160,12 @@ function add_new_boardgame_columns($boardgame_columns) {
 		$new_columns['jeziki'] = __('Jeziki');
 
 		$new_columns['zalozniki'] = __('Založniki');
+		$new_columns['vrste_iger'] = __('Vrsta igre');
 
-		$new_columns['author'] = __('Author');
+		$new_columns['author'] = __('Avtor');
 		$new_columns['comments'] = __('Komentarji');
  
-		$new_columns['date'] = _x('Date', 'column name');
+		$new_columns['date'] = _x('Datum', 'column name');
  
 		return $new_columns;
 	}	
@@ -229,8 +243,25 @@ function devpress_manage_boardgame_columns( $column, $post_id ) {
 				_e( 'Ni založnikov' );
 			}
 
-			break;		
-		
+			break;	
+			
+		case 'vrste_iger' :
+			$terms = get_the_terms( $post_id, 'vrste_iger' );
+			if ( !empty( $terms ) ) {
+				$out = array();
+				foreach ( $terms as $term ) {
+					$out[] = sprintf( '<a href="%s">%s</a>',
+						esc_url( add_query_arg( array( 'post_type' => $post->post_type, 'vrste_iger' => $term->slug ), 'edit.php' ) ),
+						esc_html( sanitize_term_field( 'name', $term->name, $term->term_id, 'vrste_iger', 'display' ) )
+					);
+				}
+				echo join( ', ', $out );
+			}
+			else {
+				_e( 'Ni vrste iger' );
+			}
+
+			break;
 
 
 		default :
@@ -329,6 +360,17 @@ function devpress_boardgame_sortable_zalozniki_columns( $columns ) {
 	return $columns;
 }
 
+add_filter( 'manage_edit-boardgame_sortable_columns', 'devpress_boardgame_sortable_vrste_iger_columns' );
+
+function devpress_boardgame_sortable_vrste_iger_columns( $columns ) {
+
+	$columns['vrste_iger'] = 'vrste_iger';
+	return $columns;
+}
+
+################################################################################
+// DODAJANJE CUSTOM FIELDS
+################################################################################	
 
 add_action("admin_init", "admin_init");
  
