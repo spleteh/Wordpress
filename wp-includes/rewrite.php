@@ -1467,7 +1467,6 @@ class WP_Rewrite {
 	 * @return array
 	 */
 	function generate_rewrite_rule($permalink_structure, $walk_dirs = false) {
-	
 		return $this->generate_rewrite_rules($permalink_structure, EP_NONE, false, false, false, $walk_dirs);
 	}
 
