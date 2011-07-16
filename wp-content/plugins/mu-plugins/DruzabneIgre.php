@@ -11,7 +11,7 @@
 
 ################################################################################
 // Plugin vsebuje:
-// 				- Custom post type Družabne igre (boardgame)
+// 				- Custom post type Družabne igre (druzabneigre)
 //				- Založnike (brez hirarhije)
 //				- Jeziki (brez hirarhije)
 //				- Vrsta igre (z hirarhijo)
@@ -30,7 +30,7 @@ function register_bg() {
  	$labels = array( 
 		'name' => _x('Družabne igre', 'Vse družabne igre'),
 		'singular_name' => _x('Vse družabne igre', 'Vse družabne igre'),
-		'add_new' => _x('Dodaj novo igro', 'boardgame'),
+		'add_new' => _x('Dodaj novo igro', 'druzabneigre'),
 		'add_new_item' => __('Dodaj novo igro'),
 		'edit_item' => __('Uredi igro'),
 		'new_item' => __('Nova igra'),
@@ -47,7 +47,7 @@ function register_bg() {
 		'has_archive' => 'resources', 
 		'supports' => array('title','editor','comments','thumbnail','custom-fields','author'),
 	);
-	register_post_type( 'boardgame', $args ); 
+	register_post_type( 'druzabneigre', $args ); 
 }
 
 ################################################################################
@@ -70,7 +70,7 @@ $labels_zaloznik = array(
 
 register_taxonomy(
 	'zalozniki',
-	array( 'boardgame' ), 
+	array( 'druzabneigre' ), 
 	array(
 		'rewrite' => array( 
 			'slug' => 'zaloznik'
@@ -101,7 +101,7 @@ $labels_jeziki = array(
 
 register_taxonomy(
 	'jeziki', 
-	array( 'boardgame' ), 
+	array( 'druzabneigre' ), 
 	array(
 		'rewrite' => array( 
 			'slug' => 'jezik'
@@ -129,7 +129,7 @@ register_taxonomy(
 
 register_taxonomy(
 	'vrste_iger', // The name of the custom taxonomy
-	array( 'boardgame' ), // Associate it with our custom post type
+	array( 'druzabneigre' ), // Associate it with our custom post type
 	array(
 		'hierarchical' => true,
 		'rewrite' => array(
@@ -145,9 +145,9 @@ register_taxonomy(
 // DODAJANJE STOLPCEV
 ################################################################################	
 	
-add_filter('manage_edit-boardgame_columns', 'add_new_boardgame_columns');
+add_filter('manage_edit-druzabneigre_columns', 'add_new_druzabneigre_columns');
 
-function add_new_boardgame_columns($boardgame_columns) {
+function add_new_druzabneigre_columns($druzabneigre_columns) {
 		$new_columns['cb'] = '<input type="checkbox" />';
 
 		$new_columns['title'] = _x('Družabna igra', 'column name');
@@ -170,9 +170,9 @@ function add_new_boardgame_columns($boardgame_columns) {
 		return $new_columns;
 	}	
 	
-	add_action( 'manage_boardgame_posts_custom_column', 'devpress_manage_boardgame_columns', 10, 2 );
+	add_action( 'manage_druzabneigre_posts_custom_column', 'devpress_manage_druzabneigre_columns', 10, 2 );
 
-function devpress_manage_boardgame_columns( $column, $post_id ) {
+function devpress_manage_druzabneigre_columns( $column, $post_id ) {
 	global $post;
 
 	switch( $column ) {
@@ -305,64 +305,64 @@ function fb_AddThumbColumn($cols) {
 	add_action( 'manage_posts_custom_column', 'fb_AddThumbValue', 10, 2 );
  
 	// for investments
-	add_filter( 'manage_boardgame_columns', 'fb_AddThumbColumn' );
-	add_action( 'manage_boardgame_custom_column', 'fb_AddThumbValue', 10, 2 );
+	add_filter( 'manage_druzabneigre_columns', 'fb_AddThumbColumn' );
+	add_action( 'manage_druzabneigre_custom_column', 'fb_AddThumbValue', 10, 2 );
 
 ################################################################################
 // SORTIRANJE
 ################################################################################	
 	
-add_filter( 'manage_edit-boardgame_sortable_columns', 'devpress_boardgame_sortable_steviloigralcev_columns' );
+add_filter( 'manage_edit-druzabneigre_sortable_columns', 'devpress_druzabneigre_sortable_steviloigralcev_columns' );
 
-function devpress_boardgame_sortable_steviloigralcev_columns( $columns ) {
+function devpress_druzabneigre_sortable_steviloigralcev_columns( $columns ) {
 
 	$columns['stevilo_igralcev'] = 'steviloigralcev';
 	return $columns;
 }
 
-add_filter( 'manage_edit-boardgame_sortable_columns', 'devpress_boardgame_sortable_casigranja_columns' );
+add_filter( 'manage_edit-druzabneigre_sortable_columns', 'devpress_druzabneigre_sortable_casigranja_columns' );
 
-function devpress_boardgame_sortable_casigranja_columns( $columns ) {
+function devpress_druzabneigre_sortable_casigranja_columns( $columns ) {
 
 	$columns['cas_igranja'] = 'casigranja';
 	return $columns;
 }
 
-add_filter( 'manage_edit-boardgame_sortable_columns', 'devpress_boardgame_sortable_starost_columns' );
+add_filter( 'manage_edit-druzabneigre_sortable_columns', 'devpress_druzabneigre_sortable_starost_columns' );
 
-function devpress_boardgame_sortable_starost_columns( $columns ) {
+function devpress_druzabneigre_sortable_starost_columns( $columns ) {
 
 	$columns['starost'] = 'starost';
 	return $columns;
 }
 
-add_filter( 'manage_edit-boardgame_sortable_columns', 'devpress_boardgame_sortable_letoizdaje_columns' );
+add_filter( 'manage_edit-druzabneigre_sortable_columns', 'devpress_druzabneigre_sortable_letoizdaje_columns' );
 
-function devpress_boardgame_sortable_letoizdaje_columns( $columns ) {
+function devpress_druzabneigre_sortable_letoizdaje_columns( $columns ) {
 
 	$columns['leto_izdaje'] = 'letoizdaje';
 	return $columns;
 }
 
-add_filter( 'manage_edit-boardgame_sortable_columns', 'devpress_boardgame_sortable_jeziki_columns' );
+add_filter( 'manage_edit-druzabneigre_sortable_columns', 'devpress_druzabneigre_sortable_jeziki_columns' );
 
-function devpress_boardgame_sortable_jeziki_columns( $columns ) {
+function devpress_druzabneigre_sortable_jeziki_columns( $columns ) {
 
 	$columns['jeziki'] = 'jeziki';
 	return $columns;
 }
 
-add_filter( 'manage_edit-boardgame_sortable_columns', 'devpress_boardgame_sortable_zalozniki_columns' );
+add_filter( 'manage_edit-druzabneigre_sortable_columns', 'devpress_druzabneigre_sortable_zalozniki_columns' );
 
-function devpress_boardgame_sortable_zalozniki_columns( $columns ) {
+function devpress_druzabneigre_sortable_zalozniki_columns( $columns ) {
 
 	$columns['zalozniki'] = 'zalozniki';
 	return $columns;
 }
 
-add_filter( 'manage_edit-boardgame_sortable_columns', 'devpress_boardgame_sortable_vrste_iger_columns' );
+add_filter( 'manage_edit-druzabneigre_sortable_columns', 'devpress_druzabneigre_sortable_vrste_iger_columns' );
 
-function devpress_boardgame_sortable_vrste_iger_columns( $columns ) {
+function devpress_druzabneigre_sortable_vrste_iger_columns( $columns ) {
 
 	$columns['vrste_iger'] = 'vrste_iger';
 	return $columns;
@@ -375,8 +375,8 @@ function devpress_boardgame_sortable_vrste_iger_columns( $columns ) {
 add_action("admin_init", "admin_init");
  
 function admin_init(){
-  add_meta_box("Osnovni_podatki", "Osnovni podatki", "osnovni_podatki_meta", "boardgame", "side", "high");
-  add_meta_box("opis_igre", "Opis igre", "opis_igre", "boardgame", "normal", "high");
+  add_meta_box("Osnovni_podatki", "Osnovni podatki", "osnovni_podatki_meta", "druzabneigre", "side", "high");
+  add_meta_box("opis_igre", "Opis igre", "opis_igre", "druzabneigre", "normal", "high");
 }
  
  
