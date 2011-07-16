@@ -22,6 +22,9 @@ $constellation_options = (
 		array('General Settings', array(
 			array('constellation_google_analytics', '', 'Google Analytics site ID','UA-XXXXX-X',''),
 			array('constellation_show_subpages', 'yes', 'Show sub-pages?','Displays a list of sub-pages when viewing a page.','yesno'),
+			array('keywords', '', 'Keywords:','Loči jih z vejico','textarea'),
+			array('description', '', 'Description:','','textarea'),
+			
 			)
 		)
 	)

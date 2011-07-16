@@ -100,3 +100,19 @@ $filters = array('pre_term_description', 'pre_link_description', 'pre_link_notes
 foreach ( $filters as $filter ) {
 	remove_filter($filter, 'wp_filter_kses');
 }
+
+function get_image_path ($post_id = null) {
+	if ($post_id == null) {
+		global $post;
+		$post_id = $post->ID;
+	}
+	$theImageSrc = wp_get_attachment_url( get_post_thumbnail_id($post_id) );
+	global $blog_id;
+	if (isset($blog_id) && $blog_id > 0) {
+		$imageParts = explode('/files/', $theImageSrc);
+		if (isset($imageParts[1])) {
+			$theImageSrc = '/blogs.dir/' . $blog_id . '/files/' . $imageParts[1];
+		}
+	}
+	return $theImageSrc;
+}
