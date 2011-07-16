@@ -19,16 +19,17 @@
 
 <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/js/slide.js" type="text/javascript"></script>
 
-</head><?php $body_classes = join( ' ', get_body_class() ); ?>
+</head>
+
+<body> <?php $body_classes = join( ' ', get_body_class() ); ?>
 <!--[if lt IE 7 ]><body class="ie6 <?php echo $body_classes; ?>"><![endif]-->
 <!--[if IE 7 ]><body class="ie7 <?php echo $body_classes; ?>"><![endif]-->
 <!--[if IE 8 ]><body class="ie8 <?php echo $body_classes; ?>"><![endif]-->
 <!--[if IE 9 ]><body class="ie9 <?php echo $body_classes; ?>"><![endif]-->
 <!--[if (gt IE 9)|!(IE)]><!-->
-
-<body> <!--<![endif]-->
 <div id="wrapper" class="<?php echo $body_classes; ?>"><!--<![endif]-->
 <?php include ('panel.php') ?>
+<nav id="main-nav" role="navigation"><?php wp_nav_menu( array( 'container_class' => 'menu-header', 'theme_location' => 'primary' ) ); ?></nav>
 <header id="header" role="banner">
 	<?php if (is_home() || is_front_page()) : ?>
 		<h1 id="logo"><a href="<?php bloginfo('url'); ?>/"><?php bloginfo('name'); ?></a></h1>
@@ -38,6 +39,6 @@
 </header>
 
 
-<nav id="main-nav" role="navigation"><?php wp_nav_menu( array( 'container_class' => 'menu-header', 'theme_location' => 'primary' ) ); ?></nav>
+
 	
 <div id="main" role="main">

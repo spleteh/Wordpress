@@ -28,8 +28,8 @@ add_action('init', 'register_bg', 1);
 
 function register_bg() { 
  	$labels = array( 
-		'name' => _x('Družabne igre', 'Družabne igre'),
-		'singular_name' => _x('Družabne igre', 'Družabne igre'),
+		'name' => _x('Družabne igre', 'Vse družabne igre'),
+		'singular_name' => _x('Vse družabne igre', 'Vse družabne igre'),
 		'add_new' => _x('Dodaj novo igro', 'boardgame'),
 		'add_new_item' => __('Dodaj novo igro'),
 		'edit_item' => __('Uredi igro'),
