@@ -140,10 +140,10 @@ function add_new_boardgame_columns($boardgame_columns) {
 		$new_columns['title'] = _x('Družabna igra', 'column name');
 		$new_columns['thumbnail'] = __('Slika');
 
-		$new_columns['steviloigralcev'] = __('Število igralcev');
-		$new_columns['casigranja'] = __('Čas igranja');
+		$new_columns['stevilo_igralcev'] = __('Število igralcev');
+		$new_columns['cas_igranja'] = __('Čas igranja');
 		$new_columns['starost'] = __('Starost');
-		$new_columns['letoizdaje'] = __('Leto izdaje');
+		$new_columns['leto_izdaje'] = __('Leto izdaje');
 		$new_columns['jeziki'] = __('Jeziki');
 
 		$new_columns['zalozniki'] = __('Založniki');
@@ -163,16 +163,16 @@ function devpress_manage_boardgame_columns( $column, $post_id ) {
 
 	switch( $column ) {
 
-		case 'steviloigralcev' :
-			$steviloigralcev = get_post_meta( $post_id, 'steviloigralcev', true );
+		case 'stevilo_igralcev' :
+			$steviloigralcev = get_post_meta( $post_id, 'stevilo_igralcev', true );
 			if ( empty( $steviloigralcev ) )
 				echo __( 'Neznano' );
 			else
 				printf( __( '%s' ), $steviloigralcev );
 			break;
 			
-		case 'casigranja' :
-			$casigranja = get_post_meta( $post_id, 'casigranja', true );
+		case 'cas_igranja' :
+			$casigranja = get_post_meta( $post_id, 'cas_igranja', true );
 			if ( empty( $casigranja ) )
 				echo __( 'Neznano' );
 			else
@@ -187,8 +187,8 @@ function devpress_manage_boardgame_columns( $column, $post_id ) {
 				printf( __( '%s+' ), $starost );
 			break;
 			
-		case 'letoizdaje' :
-			$letoizdaje = get_post_meta( $post_id, 'letoizdaje', true );
+		case 'leto_izdaje' :
+			$letoizdaje = get_post_meta( $post_id, 'leto_izdaje', true );
 			if ( empty( $letoizdaje ) )
 				echo __( 'Neznano' );
 			else
@@ -285,7 +285,7 @@ add_filter( 'manage_edit-boardgame_sortable_columns', 'devpress_boardgame_sortab
 
 function devpress_boardgame_sortable_steviloigralcev_columns( $columns ) {
 
-	$columns['steviloigralcev'] = 'steviloigralcev';
+	$columns['stevilo_igralcev'] = 'steviloigralcev';
 	return $columns;
 }
 
@@ -293,7 +293,7 @@ add_filter( 'manage_edit-boardgame_sortable_columns', 'devpress_boardgame_sortab
 
 function devpress_boardgame_sortable_casigranja_columns( $columns ) {
 
-	$columns['casigranja'] = 'casigranja';
+	$columns['cas_igranja'] = 'casigranja';
 	return $columns;
 }
 
@@ -309,7 +309,7 @@ add_filter( 'manage_edit-boardgame_sortable_columns', 'devpress_boardgame_sortab
 
 function devpress_boardgame_sortable_letoizdaje_columns( $columns ) {
 
-	$columns['letoizdaje'] = 'letoizdaje';
+	$columns['leto_izdaje'] = 'letoizdaje';
 	return $columns;
 }
 
@@ -327,6 +327,64 @@ function devpress_boardgame_sortable_zalozniki_columns( $columns ) {
 
 	$columns['zalozniki'] = 'zalozniki';
 	return $columns;
+}
+
+
+add_action("admin_init", "admin_init");
+ 
+function admin_init(){
+  add_meta_box("Osnovni_podatki", "Osnovni podatki", "osnovni_podatki_meta", "boardgame", "side", "high");
+  add_meta_box("opis_igre", "Opis igre", "opis_igre", "boardgame", "normal", "high");
+}
+ 
+ 
+function osnovni_podatki_meta() {
+  global $post;
+  $custom = get_post_custom($post->ID);
+  $stevilo_igralcev = $custom["stevilo_igralcev"][0];
+  $cas_igranja = $custom["cas_igranja"][0];
+  $starost = $custom["starost"][0];
+  $leto_izdaje = $custom["leto_izdaje"][0];
+  ?>
+  <p><label>Število igralcev:</label><br />
+  <input name="stevilo_igralcev" value="<?php echo $stevilo_igralcev; ?>" /></p>
+  <p><label>Čas igranja:</label><br />
+  <input name="cas_igranja" value="<?php echo $cas_igranja; ?> " /></p>
+  <p><label>Starost:</label><br />
+  <input name="starost" value="<?php echo $starost; ?>" /></p>
+  <p><label>Leto izdaje:</label><br />
+  <input name="leto_izdaje" value="<?php echo $leto_izdaje; ?>" /></p>
+  <?php
+}
+
+function opis_igre(){
+	global $post;
+	$custom = get_post_custom($post->ID);
+	$o_igri = $custom["o_igri"][0];
+	$cilj_igre = $custom["cilj_igre"][0];
+	$vsebina_skatle = $custom["vsebina_skatle"][0];
+	?>
+	<p><label>O igri:</label><br />
+	<textarea cols="80" rows="10" name="o_igri"><?php echo $o_igri; ?></textarea></p>
+	<p><label>Cilj igre:</label><br />
+	<textarea cols="80" rows="10" name="cilj_igre"><?php echo $cilj_igre; ?></textarea></p>
+	<p><label>Vsebina škatle:</label><br />
+	<textarea cols="80" rows="10" name="vsebina_skatle"><?php echo $vsebina_skatle; ?></textarea></p>
+  <?php
+}
+
+
+add_action('save_post', 'save_details');
+function save_details(){
+  global $post;
+ 
+  update_post_meta($post->ID, "leto_izdaje", $_POST["leto_izdaje"]);
+  update_post_meta($post->ID, "stevilo_igralcev", $_POST["stevilo_igralcev"]);
+  update_post_meta($post->ID, "cas_igranja", $_POST["cas_igranja"]);
+  update_post_meta($post->ID, "starost", $_POST["starost"]);
+  update_post_meta($post->ID, "o_igri", $_POST["o_igri"]);
+  update_post_meta($post->ID, "cilj_igre", $_POST["cilj_igre"]);
+  update_post_meta($post->ID, "vsebina_skatle", $_POST["vsebina_skatle"]);
 }
 	
 
