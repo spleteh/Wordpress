@@ -264,6 +264,39 @@ p.wp-caption-text {
 
 /*--[ Comments ]--------------------------------------------------------------------------------*/
 
+
+.postBoxInner footer {
+bottom:0;
+position:fixed;
+} 
+
+footer .comments-link a {
+    background: url("images/comment-bubble.png") no-repeat scroll 0 0 #EEEEEE;
+    color: #666666;
+    font-size: 13px;
+    font-weight: normal;
+    height: 36px;
+    line-height: 35px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    text-decoration: none;
+    top: 1.5em;
+    width: 43px;
+}
+
+
+.druzabneigre footer .comments-link a, footer .slika a {
+    right: 1em;
+    top: 20.6em;
+}
+footer .comments-link a:hover, footer .comments-link a:focus, footer .comments-link a:active {
+    background-color: #1982D1;
+    color: rgba(255, 255, 255, 0.8);
+}
+
 #comment {
 	width: 100%;
 	height: 150px;
@@ -546,7 +579,7 @@ body {
 	margin: 0 0 0 2em;
 }
 
-.druzabneigre footer {margin-top:15px;}
+.druzabneigre footer {margin-top:5px;}
 
 #main-content { width:448px; margin-right:48px; float: left;}
 #sidebar { width:200px; float: left;}
@@ -674,6 +707,88 @@ article blockquote { margin-left: 0 }
 	#subpages { width: 150px; }
 		
 }
+
+/*--[ 11 COL LAYOUT ]--------------------------------------------------------------------------------*/
+
+
+/* 
+	11-column, 1824 px layout for gigantic screens   (48px gutters)
+	---------------------------------------------------------------------------------------
+	1      2      3      4      5      6      7      8       9       10      11      12
+	98px  244px  390px  536px  682px  828px  974px  1120px  1266px  1412px  1558px  1704px
+*/
+
+@media only screen and (min-width: 1412px) {
+	
+	#wrapper {
+		padding: 64px 48px 64px;
+		width: 1412px;
+		font-size:1.2em;
+	}
+	
+	#main-nav ul {width:1224px;}
+	
+	#main-nav ul li {		
+		margin-left:5px;
+	}
+	
+	#main-nav ul li a{
+		color:#fff;
+		text-shadow: 1px 1px #000;
+		padding:15px 5px 0 5px;
+		}
+	
+	#main-nav ul li a:hover {  
+
+	text-decoration: none;
+    background: -moz-linear-gradient(#F9F9F9, #E5E5E5) repeat scroll 0 0 transparent;
+    background: -webkit-linear-gradient(#F9F9F9, #E5E5E5) repeat scroll 0 0 transparent;
+    color: #000;
+    text-shadow: 1px 1px #FFF;
+    -webkit-border-radius: 4px 4px 0 0;
+    -moz-border-radius: 4px 4px 0 0;
+    border-radius: 4px 4px 0 0;
+	height:35px;
+
+}
+	
+	#main-content { width:1000px; margin-right:0px; float: left;}
+	#sidebar { width:342px; float: left;}
+	
+	/* Turn on dropdown nav for this layout */
+	#main-nav ul li ul { display:block; 
+
+		-webkit-border-radius: 0 0 0 0;
+		-moz-border-radius: 0 0 0 0;
+		border-radius: 0 0 0 0;
+
+	}
+	
+		#main-nav ul li ul li{ display:block; 
+		text-decoration: none;
+		background: -moz-linear-gradient(#F9F9F9, #E5E5E5) repeat scroll 0 0 transparent;
+		background: -webkit-linear-gradient(#F9F9F9, #E5E5E5) repeat scroll 0 0 transparent;
+		background: linear-gradient(#F9F9F9, #E5E5E5) repeat scroll 0 0 transparent;
+		text-shadow: 1px 1px #FFF;
+		-webkit-border-radius: 0 0 0 0;
+		-moz-border-radius: 0 0 0 0;
+		border-radius: 0 0 0 0;
+
+	} 
+	#main-nav ul li ul  li a:hover{
+
+		color:#3777AF;
+				text-shadow: 1px 1px #FFF;
+		-webkit-border-radius: 0 0 0 0;
+		-moz-border-radius: 0 0 0 0;
+		border-radius: 0 0 0 0;
+		
+	}
+	
+	#subpages { width: 150px; }
+		
+}
+
 
 /*--[ 12 COL LAYOUT ]--------------------------------------------------------------------------------*/
 

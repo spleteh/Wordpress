@@ -12,6 +12,7 @@
 				'paged' => $paged ) // for paging links to work
 			);
 if (have_posts()) : while (have_posts()) : the_post(); ?>
+		
 			<div class="postBox ">
 				<div class="postBoxInner">
 						<article <?php post_class() ?> id="post-<?php the_ID(); ?>">
@@ -34,29 +35,29 @@ if (have_posts()) : while (have_posts()) : the_post(); ?>
 										<li>Starost: <?php echo get_post_meta( $post->ID, 'starost', true ); ?></li>
 										<li>Leto izdaje: <?php echo get_post_meta( $post->ID, 'leto_izdaje', true ); ?></li>
 										<li>Založnik:  <?php echo get_oznake('zaloznik'); ?></li>
-										<li>Vrsta igre: <?php echo get_oznake('vrsta_igre');  ?></li>
+										<!--<li>Vrsta igre: <?php echo get_oznake('vrsta_igre');  ?></li>-->
+										<li>Vrsta igre: <?php echo get_the_term_list( $post->ID, 'vrsta_igre', '', ', ', '' );  ?></li>
 										<li>Jezik: <?php echo get_oznake('jezik');?></li>
 									</ul>
 
 								
 								<footer>
-								<p><time datetime="<?php the_time('Y-m-d')?>"><?php the_time('M j, Y') ?></time>   			<?php if ( comments_open() ) : ?><a class="comment" href="<?php the_permalink(); ?>#comments"><?php comments_number('0 Comments', '1 Comment', '% Comments'); ?></a><?php endif; ?></p>
-								<?php $taxo_text = ""; 
-								$vrsta_igre_list = get_the_term_list( $post->ID, 'vrsta_igre', '<strong>Vrsta igre:</strong> ', ', ', '' ); 
-								if ( '' != $vrsta_igre_list ) {  
-								$taxo_text .= "$vrsta_igre_list<br />\n";} ?>  
-																
-								<?php  
-								echo $taxo_text;  
-								?>										
+								<p><time datetime="<?php the_time('Y-m-d')?>"><?php the_time('M j, Y') ?></time>   			
+								<?php if ( comments_open() ) : ?><a class="comment" href="<?php the_permalink(); ?>#comments"><?php comments_number('0 Comments', '1 Comment', '% Comments'); ?></a><?php endif; ?></p>
+								<div class="comments-link">
+									<?php if ( comments_open() ) : ?><a class="comment" href="<?php the_permalink(); ?>#comments"><?php comments_number('0', '1', '%'); ?></a><?php endif; ?>
+								</div>								
 								</footer>
 								<?php } else { ?>
 							</header>
 							
 							<?php the_content(''); ?>
-							
-							<p><time datetime="<?php the_time('Y-m-d')?>"><?php the_time('M j, Y') ?></time> <span class="author">by <?php the_author() ?></span>. <?php if ( comments_open() ) : ?><a class="comment" href="<?php the_permalink(); ?>#comments"><?php comments_number('0 Comments', '1 Comment', '% Comments'); ?></a><?php endif; ?></p>
+
 							<footer>
+								<p><time datetime="<?php the_time('Y-m-d')?>"><?php the_time('M j, Y') ?></time> <span class="author">by <?php the_author() ?></span>. 
+								<div class="comments-link <?php if(has_post_thumbnail()){ echo 'slika';}?>">
+									<?php if ( comments_open() ) : ?><a class="comment" href="<?php the_permalink(); ?>#comments"><?php comments_number('0', '1', '%'); ?></a><?php endif; ?>
+								</div>
 								<span class="category">Posted in <?php if (function_exists('parentless_categories')) parentless_categories(','); else the_category( ', ', 'multiple' ); ?></span>
 								<?php the_tags('<span class="tags">Tagged as ', ', ', '</span>'); ?>
 							</footer>

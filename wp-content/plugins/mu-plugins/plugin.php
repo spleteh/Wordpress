@@ -50,15 +50,16 @@ function register_bg() {
 	register_post_type( 'druzabneigre', $args ); 
 }
 
+################################################################################
+// TAXONOMIES
+################################################################################
 
 
-//hook into the init action and call create_book_taxonomies when it fires
 add_action( 'init', 'create_druzabneigre_taxonomies', 0 );
 
-//create two taxonomies, genres and writers for the post type "book"
+
 function create_druzabneigre_taxonomies() 
 {
-  // Add new taxonomy, make it hierarchical (like categories)
   $labels = array(
     'name' => _x( 'Vrsta igre', 'taxonomy general name' ),
     'singular_name' => _x( 'Vrsta igre', 'taxonomy singular name' ),
@@ -265,7 +266,9 @@ function devpress_manage_druzabneigre_columns( $column, $post_id ) {
 			break;
 	}
 }
-
+################################################################################
+// SLIKA
+################################################################################
 function fb_AddThumbColumn($cols) { 
 		$cols['thumbnail'] = __('Thumbnail'); 
 		return $cols;
@@ -425,6 +428,10 @@ function save_details(){
   update_post_meta($post->ID, "cilj_igre", $_POST["cilj_igre"]);
   update_post_meta($post->ID, "vsebina_skatle", $_POST["vsebina_skatle"]);
 }
+
+################################################################################
+// FUNKCIJA ZA OZNAKE
+################################################################################
 	
 add_action('init','get_oznake');
 function get_oznake($taxonomy){
@@ -443,10 +450,5 @@ $terms = get_the_terms( $post_id, $taxonomy );
 			}
 }
 
-
-
-
-	
-	
 
 ?>

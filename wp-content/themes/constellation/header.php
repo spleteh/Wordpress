@@ -14,10 +14,10 @@
 <?php endif; ?>
 <link rel="stylesheet" href="<?php bloginfo( 'stylesheet_url' ); ?>">
 <link rel="stylesheet" href="<?php bloginfo( 'template_url' ); ?>/css/test.css">
- <?php wp_enqueue_script("jquery"); 
+ <?php
 		wp_head(); ?>
 
-<script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/js/slide.js" type="text/javascript"></script>
+
 
 </head>
 
