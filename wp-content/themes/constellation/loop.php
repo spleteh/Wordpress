@@ -1,12 +1,5 @@
 <?php 
- $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-		 query_posts( array(
-		'post_type' => array(
-					'post',
-					'druzabneigre'
-				),
-				'paged' => $paged ) // for paging links to work
-			);
+
 if (have_posts()) : while (have_posts()) : the_post(); ?>
 
 	<article <?php post_class() ?> id="post-<?php the_ID(); ?>">

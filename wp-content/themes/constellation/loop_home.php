@@ -1,12 +1,13 @@
 
 
 <?php 
-	$postindex = 1;
+	
 	$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 		 query_posts( array(
 		'post_type' => array(
 					'post',
-					'druzabneigre'
+					'druzabneigre',
+					'movies'
 				),
 				'paged' => $paged ) // for paging links to work
 			);
@@ -40,7 +41,14 @@ if (have_posts()) : while (have_posts()) : the_post(); ?>
 								
 								<footer>
 								<p><time datetime="<?php the_time('Y-m-d')?>"><?php the_time('M j, Y') ?></time>   			<?php if ( comments_open() ) : ?><a class="comment" href="<?php the_permalink(); ?>#comments"><?php comments_number('0 Comments', '1 Comment', '% Comments'); ?></a><?php endif; ?></p>
-								
+								<?php $taxo_text = ""; 
+								$vrsta_igre_list = get_the_term_list( $post->ID, 'vrsta_igre', '<strong>Vrsta igre:</strong> ', ', ', '' ); 
+								if ( '' != $vrsta_igre_list ) {  
+								$taxo_text .= "$vrsta_igre_list<br />\n";} ?>  
+																
+								<?php  
+								echo $taxo_text;  
+								?>										
 								</footer>
 								<?php } else { ?>
 							</header>

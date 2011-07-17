@@ -21,7 +21,15 @@ get_header(); ?>
 
 				<?php twentyeleven_content_nav( 'nav-above' ); ?>
 
-				<?php /* Start the Loop */ ?>
+				<?php /* Start the Loop */ 
+					$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+		 query_posts( array(
+		'post_type' => array(
+					'post',
+					'druzabneigre'
+				),
+				'paged' => $paged ) // for paging links to work
+			);?>
 				<?php while ( have_posts() ) : the_post(); ?>
 
 					<?php get_template_part( 'content', get_post_format() ); ?>
