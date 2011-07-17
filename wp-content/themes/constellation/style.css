@@ -265,10 +265,7 @@ p.wp-caption-text {
 /*--[ Comments ]--------------------------------------------------------------------------------*/
 
 
-.postBoxInner footer {
-bottom:0;
-position:fixed;
-} 
+
 
 footer .comments-link a {
     background: url("images/comment-bubble.png") no-repeat scroll 0 0 #EEEEEE;
