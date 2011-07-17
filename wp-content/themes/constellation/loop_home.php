@@ -1,3 +1,5 @@
+
+
 <?php 
 	$postindex = 1;
 	$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
@@ -9,7 +11,7 @@
 				'paged' => $paged ) // for paging links to work
 			);
 if (have_posts()) : while (have_posts()) : the_post(); ?>
-			<div class="postBox <?php if(($postindex % 2) == 0){ echo 'lastBox';}?>">
+			<div class="postBox ">
 				<div class="postBoxInner">
 						<article <?php post_class() ?> id="post-<?php the_ID(); ?>">
 							<header>
@@ -20,17 +22,38 @@ if (have_posts()) : while (have_posts()) : the_post(); ?>
 							<a href="<?php the_permalink() ?>" ><img src="<?php bloginfo('template_directory'); ?>/timthumb.php?src=<?php echo get_image_path($post->ID); ?>&h=255&q=100"  alt="<?php the_title(); ?>" align="top"></a>
 						<?php } ?>
 						</center>
-
+							
 								<h2><a href="<?php the_permalink(); ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
-								<p><time datetime="<?php the_time('Y-m-d')?>">Posted <?php the_time('F jS, Y') ?></time> <span class="author">by <?php the_author() ?></span>. <?php if ( comments_open() ) : ?><a class="comment" href="<?php the_permalink(); ?>#comments"><?php comments_number('0 Comments', '1 Comment', '% Comments'); ?></a><?php endif; ?></p>
+								
+								<?php if(get_post_type($post->ID)=='druzabneigre'){ ?>
+								</header>
+									<ul class="post-meta">
+										<li>Število igralcev: <?php echo get_post_meta( $post->ID, 'stevilo_igralcev', true ); ?></li>
+										<li>Čas igranja: <?php echo get_post_meta( $post->ID, 'cas_igranja', true ); ?></li>
+										<li>Starost: <?php echo get_post_meta( $post->ID, 'starost', true ); ?></li>
+										<li>Leto izdaje: <?php echo get_post_meta( $post->ID, 'leto_izdaje', true ); ?></li>
+										<li>Založnik:  <?php echo get_oznake('zaloznik'); ?></li>
+										<li>Vrsta igre: <?php echo get_oznake('vrsta_igre');  ?></li>
+										<li>Jezik: <?php echo get_oznake('jezik');?></li>
+									</ul>
+
+								
+								<footer>
+								<p><time datetime="<?php the_time('Y-m-d')?>"><?php the_time('M j, Y') ?></time>   			<?php if ( comments_open() ) : ?><a class="comment" href="<?php the_permalink(); ?>#comments"><?php comments_number('0 Comments', '1 Comment', '% Comments'); ?></a><?php endif; ?></p>
+								
+								</footer>
+								<?php } else { ?>
 							</header>
 							
 							<?php the_content(''); ?>
 							
+							<p><time datetime="<?php the_time('Y-m-d')?>"><?php the_time('M j, Y') ?></time> <span class="author">by <?php the_author() ?></span>. <?php if ( comments_open() ) : ?><a class="comment" href="<?php the_permalink(); ?>#comments"><?php comments_number('0 Comments', '1 Comment', '% Comments'); ?></a><?php endif; ?></p>
 							<footer>
 								<span class="category">Posted in <?php if (function_exists('parentless_categories')) parentless_categories(','); else the_category( ', ', 'multiple' ); ?></span>
 								<?php the_tags('<span class="tags">Tagged as ', ', ', '</span>'); ?>
 							</footer>
+							<?php } ?>
+							
 						</article>
 				</div>
 			</div>

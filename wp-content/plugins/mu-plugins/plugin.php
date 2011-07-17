@@ -426,7 +426,22 @@ function save_details(){
   update_post_meta($post->ID, "vsebina_skatle", $_POST["vsebina_skatle"]);
 }
 	
-
+add_action('init','get_oznake');
+function get_oznake($taxonomy){
+$terms = get_the_terms( $post_id, $taxonomy );
+			if ( !empty( $terms ) ) {
+				$out = array();
+				foreach ( $terms as $term ) {
+					$out[] = sprintf( 
+						esc_html( sanitize_term_field( 'name', $term->name, $term->term_id, $taxonomy, 'display' ) )
+					);
+				}
+				echo join( ', ', $out );
+			}
+			else {
+				_e( ' ' );
+			}
+}
 
 
 
