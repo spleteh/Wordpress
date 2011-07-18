@@ -36,6 +36,7 @@ add_theme_support( 'nav-menus' );
 
 register_nav_menus( array(
 	'primary' => __( 'Primary Navigation' ),
+	'top_menu' => _( 'Top menu' ),
 ) );
 
 ################################################################################

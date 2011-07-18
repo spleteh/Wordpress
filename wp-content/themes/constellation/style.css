@@ -268,11 +268,11 @@ p.wp-caption-text {
 
 
 footer .comments-link a {
-    background: url("images/comment-bubble.png") no-repeat scroll 0 0 #EEEEEE;
-    color: #666666;
+    background: url("images/comment_bubble.png") no-repeat left 0;
+    color: #FFF;
     font-size: 13px;
     font-weight: normal;
-    height: 36px;
+    height: 48px;
     line-height: 35px;
     overflow: hidden;
     padding: 0;
@@ -281,7 +281,7 @@ footer .comments-link a {
     text-align: center;
     text-decoration: none;
     top: 1.5em;
-    width: 43px;
+    width: 48px;
 }
 
 
@@ -289,10 +289,15 @@ footer .comments-link a {
     right: 1em;
     top: 20.6em;
 }
-footer .comments-link a:hover, footer .comments-link a:focus, footer .comments-link a:active {
-    background-color: #1982D1;
-    color: rgba(255, 255, 255, 0.8);
+
+footer .comments-link a:hover, footer .comments-link a:focus, footer .comments-link a:active{
+    
+    color: #737373;
+	
 }
+
+
+
 
 #comment {
 	width: 100%;
