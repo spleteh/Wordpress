@@ -3,52 +3,25 @@
 	
 		<?php if ( function_exists('dynamic_sidebar') ) dynamic_sidebar( 'primary-widget-area' ); ?>
 		
-		<section id="poll" class="widget-container">
-			<h3 class="widget-title">How awesome is this poll?</h3>
-			<form>
-			<dl class="ninety-poll not-voted poll-title">
-				<dt><label for="input">Very Awesome</label></dt>
-				<dd>
-					<input type="radio" name="input" />
-				</dd>
-				<dt><label for="input">Pretty Awesome</label></dt>
-				<dd>
-					<input type="radio" name="input" />
-				</dd>
-				<dt><label for="input">Moderately Awesome</label></dt>
-				<dd>
-					<input type="radio" name="input" />
-				</dd>
-				<dt><label for="input">Plain Awesome</label></dt>
-				<dd>
-					<input type="radio" name="input" />
-				</dd>
-			</dl>
-			<input class="button" type="submit" value="Vote" />
-			</form>
-		</section>
+		<section id="commented-sidebar" class="widget-container">
+		<h3 class="widget-title">Najbolj komentirani</h3>
+		<ul id="most-commented">
+
+		<?php $most_commented = new WP_Query( array( 'post_type' => array( 'post', 'druzabneigre' ),'orderby' => 'comment_count', 'posts_per_page' => '10')); ?>
+		<?php while ($most_commented->have_posts()) : $most_commented->the_post(); ?>	
+
+		<li>
+		<a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a>
+
+		<span class="comment-bar"><span class="comment-count"><?php comments_number('0','1','%'); ?></span></span>
+		</li>
+
+		<?php endwhile; ?>
+
+		</ul>
+		</section>	
 		
-		<section id="poll" class="widget-container">
-			<h3 class="widget-title">How awesome is this poll?</h3> 
-			<dl class="ninety-poll voted poll-title">	
-				<dt>Very Awesome</dt>
-				<dd>
-					<span rel="50" style="width:50%;"><var>50%</var></span>
-				</dd>
-				<dt>Pretty Awesome</dt>
-				<dd>
-					<span rel="32" style="width:32%;"><var>32%</var></span>
-				</dd>
-				<dt>Moderately Awesome</dt>
-				<dd>
-					<span rel="16" style="width:16%;"><var>16%</var></span>
-				</dd>
-				<dt>Plain Awesome</dt>
-				<dd>
-					<span rel="2" style="width:2%;"><var>2%</var></span>
-				</dd>
-			</dl>
-		</section>
+		
 		
 	<?php else : ?>
 	

@@ -48,7 +48,7 @@ function register_bg() {
 		'rewrite' => false,
 		'menu_position' => 5, 
 		'has_archive' => 'resources', 
-		'supports' => array('title','editor','comments','thumbnail','custom-fields','author'),
+		'supports' => array('title','comments','thumbnail','author'),
 	);
 	register_post_type( 'druzabneigre', $args ); 
 }
@@ -378,7 +378,7 @@ function devpress_druzabneigre_sortable_vrste_iger_columns( $columns ) {
 add_action("admin_init", "admin_init");
  
 function admin_init(){
-  add_meta_box("Osnovni_podatki", "Osnovni podatki", "osnovni_podatki_meta", "druzabneigre", "side", "high");
+  add_meta_box("Osnovni_podatki", "Osnovni podatki", "osnovni_podatki_meta", "druzabneigre", "normal", "high");
   add_meta_box("opis_igre", "Opis igre", "opis_igre", "druzabneigre", "normal", "high");
 }
  
@@ -391,14 +391,14 @@ function osnovni_podatki_meta() {
   $starost = $custom["starost"][0];
   $leto_izdaje = $custom["leto_izdaje"][0];
   ?>
-  <p><label>Število igralcev:</label><br />
+  <p><label>Število igralcev:</label>
   <input name="stevilo_igralcev" value="<?php echo $stevilo_igralcev; ?>" /></p>
-  <p><label>Čas igranja:</label><br />
-  <input name="cas_igranja" value="<?php echo $cas_igranja; ?> " /></p>
-  <p><label>Starost:</label><br />
-  <input name="starost" value="<?php echo $starost; ?>" /></p>
-  <p><label>Leto izdaje:</label><br />
-  <input name="leto_izdaje" value="<?php echo $leto_izdaje; ?>" /></p>
+  <p><label>Čas igranja:</label>
+  <input size="1" name="cas_igranja" value="<?php echo $cas_igranja; ?> " /> minut</p>
+  <p><label>Starost:</label>
+  <input size="1" name="starost" value="<?php echo $starost; ?>" />+</p>
+  <p><label>Leto izdaje:</label>
+  <input size="3" name="leto_izdaje" value="<?php echo $leto_izdaje; ?>" /></p>
   <?php
 }
 
