@@ -277,7 +277,7 @@ footer .comments-link a {
     overflow: hidden;
     padding: 0;
     position: absolute;
-    right: 0;
+    right: 1em;
     text-align: center;
     text-decoration: none;
     top: 1.5em;
