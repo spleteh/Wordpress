@@ -6,8 +6,7 @@
 		 query_posts( array(
 		'post_type' => array(
 					'post',
-					'druzabneigre',
-					'movies'
+					'druzabneigre'
 				),
 				'paged' => $paged ) // for paging links to work
 			);
@@ -34,7 +33,7 @@ if (have_posts()) : while (have_posts()) : the_post(); ?>
 										<li>Čas igranja: <?php echo get_post_meta( $post->ID, 'cas_igranja', true ); ?></li>
 										<li>Starost: <?php echo get_post_meta( $post->ID, 'starost', true ); ?></li>
 										<li>Leto izdaje: <?php echo get_post_meta( $post->ID, 'leto_izdaje', true ); ?></li>
-										<li>Založnik:  <?php echo get_oznake('zaloznik'); ?></li>
+										<li>Založnik:  <?php echo get_oznake('zaloznik'); ?><?php echo get_the_term_list( $post->ID, 'zaloznik', '', ',', '' ); ?></li>
 										<!--<li>Vrsta igre: <?php echo get_oznake('vrsta_igre');  ?></li>-->
 										<li>Vrsta igre: <?php echo get_the_term_list( $post->ID, 'vrsta_igre', '', ', ', '' );  ?></li>
 										<li>Jezik: <?php echo get_oznake('jezik');?></li>
@@ -43,7 +42,6 @@ if (have_posts()) : while (have_posts()) : the_post(); ?>
 								
 								<footer>
 								<p><time datetime="<?php the_time('Y-m-d')?>"><?php the_time('M j, Y') ?></time>   			
-								<?php if ( comments_open() ) : ?><a class="comment" href="<?php the_permalink(); ?>#comments"><?php comments_number('0 Comments', '1 Comment', '% Comments'); ?></a><?php endif; ?></p>
 								<div class="comments-link">
 									<?php if ( comments_open() ) : ?><a class="comment" href="<?php the_permalink(); ?>#comments"><?php comments_number('0', '1', '%'); ?></a><?php endif; ?>
 								</div>								

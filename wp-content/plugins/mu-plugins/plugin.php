@@ -109,7 +109,7 @@ function create_druzabneigre_taxonomies()
     'labels' => $labels,
     'show_ui' => true,
     'query_var' => true,
-    'rewrite' => array( 'slug' => 'zaloznik' ),
+    'rewrite' =>true,
   ));
   
    $labels = array(
