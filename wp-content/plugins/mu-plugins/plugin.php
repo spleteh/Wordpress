@@ -43,7 +43,9 @@ function register_bg() {
 		'labels' => $labels, 
 		'public' => true, 
 		'hierarchical' => false,
-		'rewrite' => true,		
+		'publicly_queryable' => true,
+		'query_var' => true,
+		'rewrite' => false,
 		'menu_position' => 5, 
 		'has_archive' => 'resources', 
 		'supports' => array('title','editor','comments','thumbnail','custom-fields','author'),
@@ -450,29 +452,13 @@ $terms = get_the_terms( $post_id, $taxonomy );
 				_e( ' ' );
 			}
 }
-/*
-add_action('init','_activate');
 
-function _activate() {
-    	global $wp_rewrite;
-	$wp_rewrite->add_rewrite_tag("%druzabneigre%", '([^/]+)', "druzabneigre=");
-	$wp_rewrite->add_permastruct('druzabneigre', $druzabneigre_structure, false);    
-	$wp_rewrite->flush_rules();	
-}
-
-add_action('init','_deactivate');
- 
-function _deactivate() {
-    	global $wp_rewrite;		
-	$wp_rewrite->add_permastruct( 'druzabneigre', '');
-	$wp_rewrite->flush_rules();	
-}
 
 add_action('init','init');
 function init(){
 // add to our plugin init function
 global $wp_rewrite;
-$druzabneigre_structure = '/druzabneigre/%postname%';
+$druzabneigre_structure = '%druzabneigre%';
 $wp_rewrite->add_rewrite_tag("%druzabneigre%", '([^/]+)', "druzabneigre=");
 $wp_rewrite->add_permastruct('druzabneigre', $druzabneigre_structure, false);
 // Add filter to plugin init function
@@ -541,5 +527,5 @@ function druzabneigre_permalink($permalink, $post_id, $leavename) {
 	return $permalink;
 }
 
-*/
+
 ?>
