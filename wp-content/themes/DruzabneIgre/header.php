@@ -29,7 +29,8 @@
 <!--[if IE 9 ]><body class="ie9 <?php echo $body_classes; ?>"><![endif]-->
 <!--[if (gt IE 9)|!(IE)]><!-->
 <div id="wrapper" class="<?php echo $body_classes; ?>"><!--<![endif]-->
-<?php include ('panel.php') ?>
+<?php get_template_part('panel'); ?>
+
 <nav id="topNav" role="navigation">
 	<?php wp_nav_menu( array( 'theme_location' => 'topMenu' ) ); ?>
 </nav>

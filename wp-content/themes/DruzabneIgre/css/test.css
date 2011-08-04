@@ -265,7 +265,7 @@
 nav li:hover ul { display:block; }
 
 /* base nav styles */
-nav { display:block; margin:-3.95em auto 20px; border:1px solid #222; position:relative; font:16px Tahoma, Sans-serif; }
+nav { display:block; margin:-3.68em auto 20px; border:1px solid #222; position:relative; font:16px Tahoma, Sans-serif; }
 nav ul { padding:0; margin:0; }
 nav li { position:relative; float:left; list-style-type:none; }
 nav ul:after { content:"."; display:block; height:0; clear:both; visibility:hidden; }

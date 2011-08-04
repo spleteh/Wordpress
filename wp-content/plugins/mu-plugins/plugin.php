@@ -82,7 +82,7 @@ function create_druzabneigre_taxonomies()
     'labels' => $labels,
     'show_ui' => true,
     'query_var' => true,
-    'rewrite' => array( 'slug' => 'vrstaigre' ),
+    'rewrite' => true
   ));
 
   // Add new taxonomy, NOT hierarchical (like tags)
@@ -109,7 +109,7 @@ function create_druzabneigre_taxonomies()
     'labels' => $labels,
     'show_ui' => true,
     'query_var' => true,
-    'rewrite' =>true,
+    'rewrite' =>true
   ));
   
    $labels = array(
@@ -135,7 +135,7 @@ function create_druzabneigre_taxonomies()
     'labels' => $labels,
     'show_ui' => true,
     'query_var' => true,
-    'rewrite' => array( 'slug' => 'jezik' ),
+    'rewrite' => true
   ));
 }
 
@@ -526,6 +526,7 @@ function druzabneigre_permalink($permalink, $post_id, $leavename) {
 	}
 	return $permalink;
 }
+
 
 
 ?>
