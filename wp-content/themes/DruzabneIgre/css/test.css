@@ -307,3 +307,47 @@ nav ul ul a:hover { background-color:#555; }
 .no-csstransforms ul a span { height:7px; width:12px; margin-top:8px; text-indent:-5000px; overflow:hidden; background:url(../fallback/indicator.png) no-repeat 0 0; }
 .no-borderradius ul ul li.last { margin-bottom:10px; }
 .no-cssgradients.boxshadow nav { box-shadow:none; }
+
+
+
+
+/* Social Links */
+
+#socialLinks {
+	position:absolute;
+	right:35em;
+	top:75px;
+	background:url(images/bk_social_links.png) 0 50% no-repeat;
+	height:64px;
+	float:right;
+}
+
+#socialLinks .linkedin, #socialLinks .facebook, #socialLinks .twitter, #socialLinks .rss {
+	display:block;
+	width:64px;
+	height:64px;
+	float:left;
+	margin-left:5px;
+	text-indent:-9999px;
+	
+}
+
+#socialLinks .linkedin:hover, #socialLinks .facebook:hover, #socialLinks .twitter:hover, #socialLinks .rss:hover {
+	margin-bottom:2px;
+}
+
+#socialLinks .linkedin {
+	background:url(images/ico_linkedin.png) 0 0 no-repeat;
+}
+
+#socialLinks .facebook {
+	background:url(../images/facebook.png) 0 0 no-repeat;
+}
+
+#socialLinks .twitter {
+	background:url(../images/twitter.png) 0 0 no-repeat;
+}
+
+#socialLinks .rss {
+	background:url(../images/rss1.png) 0 0 no-repeat;
+}

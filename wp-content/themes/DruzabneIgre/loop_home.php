@@ -33,10 +33,10 @@ if (have_posts()) : while (have_posts()) : the_post(); ?>
 										<li>Čas igranja: <?php echo get_post_meta( $post->ID, 'cas_igranja', true ); ?></li>
 										<li>Starost: <?php echo get_post_meta( $post->ID, 'starost', true ); ?></li>
 										<li>Leto izdaje: <?php echo get_post_meta( $post->ID, 'leto_izdaje', true ); ?></li>
-										<li>Založnik:  <?php echo get_oznake('zaloznik'); ?><?php echo get_the_term_list( $post->ID, 'zaloznik', '', ',', '' ); ?></li>
+										<li>Založnik:  <?php echo get_the_term_list( $post->ID, 'zaloznik', '', ',', '' ); ?></li>
 										<!--<li>Vrsta igre: <?php echo get_oznake('vrsta_igre');  ?></li>-->
 										<li>Vrsta igre: <?php echo get_the_term_list( $post->ID, 'vrsta_igre', '', ', ', '' );  ?></li>
-										<li>Jezik: <?php echo get_oznake('jezik');?></li>
+										<li>Jezik: <?php echo get_the_term_list( $post->ID, 'jezik', '', ',', '' ); ?></li>
 									</ul>
 
 								
