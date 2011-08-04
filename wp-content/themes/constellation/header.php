@@ -29,7 +29,9 @@
 <!--[if (gt IE 9)|!(IE)]><!-->
 <div id="wrapper" class="<?php echo $body_classes; ?>"><!--<![endif]-->
 <?php include ('panel.php') ?>
-<nav id="main-nav" role="navigation"><?php wp_nav_menu( array( 'container_class' => 'menu-header', 'theme_location' => 'primary' ) ); ?></nav>
+<nav id="topMenu" role="navigation" class="ddsmoothmenu">
+	<?php wp_nav_menu( array( 'container_class' => 'ddsmoothmenu','container_id' => 'topMenu', 'theme_location' => 'topMenu' ) ); ?>
+</nav>
 <header id="header" role="banner">
 	<?php if (is_home() || is_front_page()) : ?>
 		<h1 id="logo"><a href="<?php bloginfo('url'); ?>/"><?php bloginfo('name'); ?></a></h1>

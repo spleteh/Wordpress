@@ -98,6 +98,38 @@ header {
 	clear: both;
 	padding: 1em 0 0 0;
 }
+
+/* TopMenu */
+
+.ddsmoothmenu {
+	position:absolute;
+	left:0;
+	top:6px;
+	border-right:1px solid #2F2F2F;
+}
+
+.ddsmoothmenu ul li {
+	float:left;
+}
+
+.ddsmoothmenu ul li a{
+	display:block;
+	color:#ccc;
+	text-decoration:none;
+	border-left:1px solid #2F2F2F;
+	height:42px;
+	line-height:42px;
+	text-transform:uppercase;
+	font-size:11px;
+	padding:0 12px;
+}
+
+.ddsmoothmenu ul li a:hover {
+	color:#FFFFFF;
+	background:url(images/bk_top_hover.png) 50% 0 no-repeat;
+}
+
+
 #main-nav
 {   background: -moz-linear-gradient(#252525, #0A0A0A) repeat scroll 0 0 transparent;
 	background: -webkit-linear-gradient(#252525, #0A0A0A) repeat scroll 0 0 transparent;
