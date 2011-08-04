@@ -779,7 +779,7 @@ article blockquote { margin-left: 0 }
 
 /* --------------------------- */
 #most-commented {
-    width: 400px;
+    width: 250px;
 }
 
 #most-commented li {
