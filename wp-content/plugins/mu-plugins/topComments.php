@@ -10,11 +10,53 @@ Author URI: http://azuliadesigns.com/
  
 function sampleHelloWorld()
 {
- 
+/*
+echo "<style>
+#most-commented {
+    width: 250px;
+}
+
+#most-commented li {
+    list-style: none;
+}
+
+#most-commented a {
+    display: block;
+}
+#most-commented .comment-bar {
+    display: inline-block;
+    position: relative;
+    height: 30px;
+    width: 0;
+    margin: 5px 0;
+    padding-left: 20px;
+    background-color: #999;
+}
+
+#most-commented .comment-count {
+    display: inline-block;
+    position: absolute;
+    right: -20px;
+    top: -5px;
+    width: 34px;
+    height: 34px;
+    border-width: 3px;
+    border-style: solid;
+    border-color: #FFF;
+    -moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+    border-radius: 20px;
+    text-align: center;
+    line-height: 34px;
+    background-color: #6CAC1F;
+    font-size: 13px;
+    font-weight: bold;
+    color: #FFF;
+}</style>"; */
 
 	echo "<ul id='most-commented'>";
 
-	$most_commented = new WP_Query( array( 'post_type' => array( 'post', 'druzabneigre' ),'orderby' => 'comment_count', 'posts_per_page' => '10')); 
+	$most_commented = new WP_Query( array( 'post_type' => array( 'post', 'druzabneigre' ),'orderby' => 'comment_count', 'posts_per_page' => '5')); 
 	  while ($most_commented->have_posts()) : $most_commented->the_post(); 	
 
 	echo "<li>";

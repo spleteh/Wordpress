@@ -6,11 +6,14 @@ $j(document).ready(function() {
 	// Expand Panel
 	$j("#open").click(function(){
 		$j("div#panel").slideDown("slow");	
+
+		document.getElementById('toppanel').style.background = '#272727';
 	});	
 	
 	// Collapse Panel
 	$j("#close").click(function(){
-		$j("div#panel").slideUp("slow");	
+		$j("div#panel").slideUp("slow");
+document.getElementById('toppanel').style.background = 'none';		
 	});		
 	
 	// Switch buttons from "Log In | Register" to "Close Panel" on click
@@ -42,12 +45,15 @@ $c(function() {
 
         // apply the width to the bar
         $this.find('.comment-bar').animate({
+		
             width : thisWidth
-        }, 200, 'swing');
+        }, 900, 'swing');	
     });
+
 });
 
 var $d = jQuery.noConflict();
+	
 $d(function($){
 
 		//cache nav

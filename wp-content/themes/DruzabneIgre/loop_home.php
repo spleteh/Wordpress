@@ -41,7 +41,9 @@ if (have_posts()) : while (have_posts()) : the_post(); ?>
 
 								
 								<footer>
-								<p><time datetime="<?php the_time('Y-m-d')?>"><?php the_time('M j, Y') ?></time>   			
+								<a href="<?php the_permalink() ?>" class="more-link">Več &raquo;</a>
+								<p class="author"> <?php the_author_link(); ?> </p>
+								<time datetime="<?php the_time('Y-m-d')?>"><?php the_time('M j, Y') ?></time>   			
 								<div class="comments-link">
 									<?php if ( comments_open() ) : ?><a class="comment" href="<?php the_permalink(); ?>#comments"><?php comments_number('0', '1', '%'); ?></a><?php endif; ?>
 								</div>								

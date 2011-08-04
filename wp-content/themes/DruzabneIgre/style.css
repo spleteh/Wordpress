@@ -126,13 +126,13 @@ header {
 	background:#F7F9F9;
 	-moz-border-radius:8px;
     -webkit-border-radius:8px;
-	height:450px;
+	height:470px;
 	font-size:12px;
 }
 
 #main-content  .postBoxInner:hover {
 	background:#FFF;
-	border:8px solid #e8eff5;
+	border:8px solid #FFF;
 }
 
 /*--[ Anchors ]--------------------------------------------------------------------------------*/
@@ -168,7 +168,7 @@ h6 { font-size:0.875em; line-height: 1.7143em; margin-top:1.7143em; text-transfo
 #logo {font-size:2em; line-height: 1em; margin: 1em 0 1em; padding: 0; font-weight: bold; letter-spacing: -.05em; font-family:AgentRed;width:25em;}
 
 p, ul, ol, dl, blockquote, hr, pre, table, fieldset, article, article footer, nav {
-	margin: 0 0 1.5em 0;
+	margin: 0 0 0.5em 0;
 	line-height: 1.5em;
 }
 
@@ -564,7 +564,7 @@ body {
 	margin: 0 0 0 2em;
 }
 
-.druzabneigre footer {margin-top:5px;}
+.druzabneigre footer {margin-top:5px;border-top:1px solid #E2E2D8;}
 
 #main-content { width:448px; margin-right:48px; float: left;}
 #sidebar { width:200px; float: left;}
@@ -679,7 +679,7 @@ article blockquote { margin-left: 0 }
 
 	
 	#main-content { width:1000px; margin-right:0px; float: left;}
-	#sidebar { width:342px; float: left;}
+	#sidebar { width:300px; float: left; margin-left:2em;}
 	
 	/* Turn on dropdown nav for this layout */
 
@@ -792,20 +792,20 @@ article blockquote { margin-left: 0 }
 #most-commented .comment-bar {
     display: inline-block;
     position: relative;
-    height: 30px;
+    height: 20px;
     width: 0;
     margin: 5px 0;
     padding-left: 20px;
-    background-color: #999;
+    background-color: #e8eff5;
 }
 
 #most-commented .comment-count {
     display: inline-block;
     position: absolute;
     right: -20px;
-    top: -5px;
-    width: 34px;
-    height: 34px;
+    top: -7px;
+    width: 25px;
+    height: 25px;
     border-width: 3px;
     border-style: solid;
     border-color: #FFF;
@@ -813,10 +813,74 @@ article blockquote { margin-left: 0 }
     -webkit-border-radius: 20px;
     border-radius: 20px;
     text-align: center;
-    line-height: 34px;
-    background-color: #6CAC1F;
+    line-height: 25px;
+    background-color: rgba(0, 0, 0, 0.8);;
     font-size: 13px;
     font-weight: bold;
     color: #FFF;
 }
 
+
+#sidebar  section {
+	padding:0px 20px 25px;
+	background:#fff;
+	position:relative;
+	margin-bottom:1em;
+	-moz-border-radius: 8px;
+	-khtml-border-radius: 8px;
+	-webkit-border-radius: 8px;
+	border-radius: 8px;
+}
+
+.boxshadow #sidebar  section { -moz-box-shadow: 0px 5px 4px rgba(0,0,0,0.2);  -webkit-box-shadow: 0px 5px 4px rgba(0,0,0,0.2);  box-shadow:0px 5px 4px rgba(0,0,0,0.2); }
+
+#sidebar h3  {
+	font-size:14px;
+	font-weight:bold;
+	letter-spacing:0;
+	color:#000;
+	text-transform:uppercase;
+	display:block;
+	text-align:center;
+	height:39px;
+
+
+	padding:13px 15px 0 20px;
+}
+
+#sidebar ul li {
+border-bottom: 1px solid #E2E2D8;
+}
+
+footer {padding-top:10px;}
+
+footer .more-link{
+	display:block;
+	background:url(images/ico_readmore1.png) 0 0 no-repeat;
+	padding:3px 0;
+	padding-left:35px;
+	font-size:14px;
+	font-weight:bold;
+	float:left;
+	margin-right:10px;
+}
+
+footer .author {
+	display:block;
+background:url(images/ico_author.png) 0 0 no-repeat;
+	padding:3px 0;
+	padding-left:35px;
+	margin-right:10px;
+	float:left;
+
+}
+
+footer time {
+	display:block;
+background:url(images/ico_calendar.png) 0 0 no-repeat;
+	padding:3px 0;
+	padding-left:35px;
+
+	float:left;
+
+}

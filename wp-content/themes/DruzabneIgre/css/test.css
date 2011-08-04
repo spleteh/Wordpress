@@ -1,6 +1,7 @@
 /*LOGIN */
 /* sliding panel */
 #toppanel {
+background: none;
 	position: absolute;   /*Panel will overlap  content */
 	/*position: relative;*/   /*Panel will "push" the content down */
 	top: 0;
@@ -10,7 +11,13 @@
 	text-align: center;
 	margin-left: auto;
 	margin-right: auto;
-	font-size: 130%; /* font-size set to 130% for the default Kubrick Wordpress theme */
+	font-size: 90%; /* font-size set to 130% for the default Kubrick Wordpress theme */
+		-moz-border-radius-bottomleft:8px;
+	-moz-border-radius-bottomright:8px;
+	-webkit-border-bottom-left-radius:8px;
+	-webkit-border-bottom-right-radius:8px;
+	border-bottom-left-radius:8px;
+	border-bottom-right-radius:8px;
 }
  
 #panel {
@@ -22,12 +29,7 @@
 	position: relative;
 	z-index: 3;
 	display: none;
-	-moz-border-radius-bottomleft:8px;
-	-moz-border-radius-bottomright:8px;
-	-webkit-border-bottom-left-radius:8px;
-	-webkit-border-bottom-right-radius:8px;
-	border-bottom-left-radius:8px;
-	border-bottom-right-radius:8px;
+
 }
  
 #panel h1 {
@@ -187,7 +189,7 @@
 /* do sem je preverjono za vse brskalnike */	
 /* Panel Tab/button */
 .tab {
-  	background: url(../images/tab_b.png) repeat-x 0 0;
+
 	height: 42px;
 	position: relative;
 	top: 0;
@@ -211,7 +213,7 @@
 }
  
 .tab ul.login li.left {
-  	background: url(../images/tab_l.png) no-repeat left 0;
+
   	height: 42px;
 	width: 30px;
 	padding: 0;
@@ -221,7 +223,7 @@
 }
  
 .tab ul.login li.right {
-  	background: url(../images/tab_r.png) no-repeat left 0;
+
   	height: 42px;
 	width: 30px;
 	padding: 0;
@@ -236,7 +238,7 @@
 	display: block;
 	float: left;
 	height: 42px;
-  	background: url(../images/tab_m.png) repeat-x 0 0;
+
 }
  
 .tab ul.login li a {
@@ -271,7 +273,7 @@
 nav li:hover ul { display:block; }
 
 /* base nav styles */
-nav { display:block; margin:-3.72em auto 20px; border:1px solid #222; position:relative; font:16px Tahoma, Sans-serif; }
+nav { display:block; margin:-3.72em auto 20px; position:relative; font:16px Tahoma, Sans-serif; }
 nav ul { padding:0; margin:0; }
 nav li { position:relative; float:left; list-style-type:none; }
 nav ul:after { content:"."; display:block; height:0; clear:both; visibility:hidden; }
@@ -298,7 +300,7 @@ nav ul ul a:hover { background-color:#555; }
 .csstransforms ul a span { -moz-transform:rotate(-180deg);-webkit-transform:rotate(-180deg); }
 
 
-/* Social Links */
+/* Social Links 
 
 #socialLinks {
 	position:absolute;
@@ -337,4 +339,4 @@ nav ul ul a:hover { background-color:#555; }
 
 #socialLinks .rss {
 	background:url(../images/rss1.png) 0 0 no-repeat;
-}
+}*/

@@ -41,11 +41,11 @@
 		<div id="logo"><a href="<?php bloginfo('url'); ?>/"><?php bloginfo('name'); ?></a></div>			
 	<?php endif; ?>
 	<div id="socialLinks">
-				<a href="#" class="facebook" title="Join us on Facebook!">Join us on Facebbook!</a>
+				<a href="#" class="facebook" title="Join us on Facebook!"></a>
 
 		
-				<a href="http://twitter.com/" class="twitter" title="Follow Us on Twitter!">Follow Us on Twitter!</a>
-	<a href="<?php bloginfo('rss2_url'); ?>" title="RSS" class="rss">Subscribe to our RSS Feed!</a>
+				<a href="http://twitter.com/" class="twitter" title="Follow Us on Twitter!"></a>
+	<a href="<?php bloginfo('rss2_url'); ?>" title="RSS" class="rss"></a>
 	</div>
 </header>
 
