@@ -25,7 +25,7 @@ if (have_posts()) : while (have_posts()) : the_post(); ?>
 						</center>
 							
 								<h2><a href="<?php the_permalink(); ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
-								<?php wp_gdsr_render_article(); ?>
+								
 								<?php if(get_post_type($post->ID)=='druzabneigre'){ ?>
 								</header>
 									<ul class="post-meta">
@@ -41,12 +41,14 @@ if (have_posts()) : while (have_posts()) : the_post(); ?>
 
 								
 								<footer>
+								<?php wp_gdsr_render_article(); ?>	
 								<a href="<?php the_permalink() ?>" class="more-link">Več &raquo;</a>
 								<p class="author"> <?php the_author_link(); ?> </p>
 								<time datetime="<?php the_time('Y-m-d')?>"><?php the_time('M j, Y') ?></time>   			
 								<div class="comments-link">
 									<?php if ( comments_open() ) : ?><a class="comment" href="<?php the_permalink(); ?>#comments"><?php comments_number('0', '1', '%'); ?></a><?php endif; ?>
-								</div>								
+								</div>	
+															
 								</footer>
 								<?php } else { ?>
 							</header>

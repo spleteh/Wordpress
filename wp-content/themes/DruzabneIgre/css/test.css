@@ -468,9 +468,8 @@ nav ul ul a:hover { background-color:#555; }
 /* loading indicators */
 .loader { margin-left: auto; margin-right: auto; text-align: left; }
 
-.loader.flower { background: url(../gfx/loader/flower.gif) no-repeat left; padding-left: 18px; }
-.loader.flower.width { width: 16px; }
-.loader.snake { background: url(../gfx/loader/snake.gif) no-repeat left; padding-left: 14px; }
+
+.loader.snake { background: url(../images/snake.gif) no-repeat left; padding-left: 14px; }
 .loader.snake.width { width: 12px; }
 
 .loader.width { padding-left: 0px; }
@@ -488,18 +487,6 @@ nav ul ul a:hover { background-color:#555; }
     border-bottom: 1px solid gray;
     margin: 3px;
     padding: 3px;
-}
-
-.gdsrclsmall {
-    background: url(../gfx/load_small.png) no-repeat left;
-    padding-left: 28px;
-    width: 120px;
-}
-
-.gdsrclbig {
-    background: url(../gfx/load_big.png) no-repeat left;
-    padding-left: 46px;
-    width: 160px;
 }
 
 .gdsrclsmall strong { font-size: 14px; }
