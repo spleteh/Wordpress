@@ -47,7 +47,7 @@ $c(function() {
         $this.find('.comment-bar').animate({
 		
             width : thisWidth
-        }, 900, 'swing');	
+        }, 200, 'swing');	
     });
 
 });
