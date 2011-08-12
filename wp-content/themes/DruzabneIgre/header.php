@@ -40,6 +40,13 @@
 	<?php else : ?>
 		<div id="logo"><a href="<?php bloginfo('url'); ?>/"><?php bloginfo('name'); ?></a></div>			
 	<?php endif; ?>
+	<div id="topSearch">
+				<form id="searchform" action="<?php bloginfo('url'); ?>/" method="get">
+					<input type="submit" value="" id="searchsubmit"/>
+					<input type="text" id="s" name="s" value="išči..." />
+				</form>
+			</div>
+	
 	<div id="socialLinks">
 				<a href="#" class="facebook" title="Join us on Facebook!"></a>
 
