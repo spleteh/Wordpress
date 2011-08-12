@@ -68,6 +68,7 @@ $d(function($){
 				//show subnav on hover
 				$(this).mouseenter(function() {
 					$(this).find("ul").stop(true, true).slideDown();
+					console.log('mouseenter');
 				});
 
 				//hide submenus on exit
@@ -76,4 +77,31 @@ $d(function($){
 				});
 			}
 		});
-	})
+	});
+
+	var $f = jQuery.noConflict();
+	
+$f(function($){
+
+		//cache nav
+		var nav = $("#comments");
+
+		//add indicators and hovers to submenu parents
+		nav.find("article").each(function() {
+		if ($(this).find("header").length > 0) {
+			
+				$(this).mouseenter(function() {
+				
+					$(this).find("header").style.background = '#272727';
+				});
+
+				//hide submenus on exit
+				$(this).mouseleave(function() {
+					console.log('mouseleave');
+					$(this).find("header").style.background = 'none';
+				});
+			}
+		});
+	});
+
+

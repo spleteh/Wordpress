@@ -135,6 +135,8 @@ header {
 	border:8px solid #FFF;
 }
 
+#main-content article.druzabneigre {margin-bottom:4em;}
+
 /*--[ Anchors ]--------------------------------------------------------------------------------*/
 
 a { color: #3777AF; text-decoration: none; }
@@ -267,7 +269,7 @@ footer .comments-link a {
     right: 0;
     text-align: center;
     text-decoration: none;
-    top: 0;
+    top: 1em;
     width: 48px;
 }
 
@@ -286,6 +288,8 @@ footer .comments-link a:hover, footer .comments-link a:focus, footer .comments-l
 	width: 100%;
 	height: 150px;
 }
+
+
 #respond {
 	margin-top: 20px;
 }
@@ -311,8 +315,9 @@ ol.comment-list li {
 	position: relative;
 }
 ol.comment-list li header {
-	margin: 0;
+	margin-bottom: 0em;
 	line-height: 1.5em;
+	
 }
 ol.comment-list li article nav {
 	float: right;
@@ -352,6 +357,40 @@ ol.comment-list li p.meta {
 ol.comment-list li p.meta strong {
 	font-weight: bold;
 	}
+
+article.comment{
+margin:0 1em 2em 3em;
+background:#fff;
+	-moz-border-radius: 10px;
+	-khtml-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	 box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.2);
+}
+
+article.comment footer{float:right; font-size:0.7em;}
+	
+article.bypostauthor{
+	background:#ddd;
+}
+
+article.comment p{padding:1em;}
+
+ol.comment-list cite.fn{
+	position: absolute;
+	left: 0;
+	top: 60px;
+}
+
+ol.comment-list time{
+font-size:12px;
+	position: absolute;
+	left: 0;
+	top: 80px;
+	line-height:20px;
+	width:90px;
+}	
+	
 #respond {
 	margin-bottom: 15px;
 	}
@@ -573,7 +612,7 @@ body {
 
 .druzabneigre .slika{
 	float:left;
-	margin-right:1em;
+	margin-right:2em;
 }
 
 .druzabneigre .opisIgre{
@@ -653,11 +692,11 @@ position: relative;
 .paging .prev { float: left;}
 .paging .next { float: right; }
 article blockquote { margin-left: 0 }
-#main-content article {margin-bottom:4em;}
 
-#main-content article  {margin-bottom:4em;min-height:30em;}
 
-#main-content article header {border-bottom:1px solid #E2E2D8; margin-bottom:1em;}
+
+
+#main-content article.druzabneigre header {border-bottom:1px solid #E2E2D8; margin-bottom:1em;}
 
 
 /*--[ 9 COL LAYOUT ]--------------------------------------------------------------------------------*/
@@ -1070,3 +1109,5 @@ font-size:1em;}
 	position:relative;
 	height:100px;
 }
+
+

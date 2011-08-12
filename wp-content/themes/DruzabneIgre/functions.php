@@ -45,13 +45,15 @@ register_nav_menus( array(
 
 function theme_comments($comment, $args, $depth) {
 	$GLOBALS['comment'] = $comment; ?>
-   	<li>
+   	
+	<li>
      <article <?php comment_class(); ?> id="comment-<?php comment_ID(); ?>">
        <header class="comment-author vcard">
-          <?php echo get_avatar($comment,$size='48',$default='<path_to_url>' ); ?>
-          <?php printf(__('<cite class="fn">%s</cite> <span class="says">says:</span>'), get_comment_author_link()) ?>
-          <time><a href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ) ?>"><?php printf(__('%1$s at %2$s'), get_comment_date(),  get_comment_time()) ?></a></time>
-          <?php edit_comment_link(__('(Edit)'),'  ','') ?>
+          <?php echo get_avatar($comment, '40'); ?>
+          <?php printf(__('<cite class="fn">%s</cite>'), get_comment_author_link()) ?>
+          <time><a href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ) ?>"><?php printf(__('%1$s %2$s'), get_comment_date(),  get_comment_time()) ?></a></time>
+
+
        </header>
        <?php if ($comment->comment_approved == '0') : ?>
           <em><?php _e('Your comment is awaiting moderation.') ?></em>
@@ -60,9 +62,11 @@ function theme_comments($comment, $args, $depth) {
 
        <?php comment_text() ?>
 
-       <nav>
-         <?php comment_reply_link(array_merge( $args, array('depth' => $depth, 'max_depth' => $args['max_depth']))) ?>
-       </nav>
+       <footer>
+	    <?php edit_comment_link(__('Uredi'),'  ',''); delete_comment_link(get_comment_ID());
+		?><?php comment_reply_link(array_merge( $args, array('depth' => $depth, 'max_depth' => $args['max_depth']))) ?>
+	   </footer>
+
      </article>
     <!-- </li> is added by wordpress automatically -->
     <?php
@@ -118,3 +122,10 @@ function get_image_path ($post_id = null) {
 	return $theImageSrc;
 }
 
+
+function delete_comment_link($id) {
+  if (current_user_can('edit_post')) {
+    echo ' | <a href="'.admin_url("comment.php?action=cdc&c=$id").'">Izbriši</a> ';
+    echo ' | <a href="'.admin_url("comment.php?action=cdc&dt=spam&c=$id").'">Spam</a> | ';
+  }
+}
