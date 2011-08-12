@@ -5,26 +5,25 @@ background: none;
 	position: absolute;   /*Panel will overlap  content */
 	/*position: relative;*/   /*Panel will "push" the content down */
 	top: 0;
-	left: 800px;
-	width: 50%;
+	right:245px;
+	width: 510px;
 	z-index: 999;
 	text-align: center;
 	margin-left: auto;
 	margin-right: auto;
 	font-size: 90%; /* font-size set to 130% for the default Kubrick Wordpress theme */
-		-moz-border-radius-bottomleft:8px;
-	-moz-border-radius-bottomright:8px;
-	-webkit-border-bottom-left-radius:8px;
-	-webkit-border-bottom-right-radius:8px;
-	border-bottom-left-radius:8px;
-	border-bottom-right-radius:8px;
+	-moz-border-radius:1em;
+	-webkit-border-radius:1em;
+	-khtml-border-radius:1em;
+	-o-border-radius:1em;
+	border-radius:1em;
 }
  
 #panel {
 	width: 100%;
 	height: 280px;
 	color: #999999;
-	background: #272727;
+	background: #FFF;
 	overflow: hidden;
 	position: relative;
 	z-index: 3;
@@ -33,11 +32,12 @@ background: none;
 }
  
 #panel h1 {
-	font-size: 1.6em;
+	font-size: 1.3em;
 	padding: 5px 0 10px;
 	margin: 0;
-	color: white;
+	color: #000;
 	text-align: left;
+	font-weight: normal;
 }
  
 #panel h2{
@@ -75,7 +75,7 @@ background: none;
 }
  
 #panel .content {
-	width: 960px;
+	width: 600px;
 	margin: 0 auto;
 	padding-top: 15px;
 	text-align: left;
@@ -83,18 +83,15 @@ background: none;
 }
  
 #panel .content .left {
-	width: 280px;
+	width: 225px;
 	float: left;
 	margin-bottom: 25px;
 	padding: 0 15px;
-	border-right: 1px solid #333;
+	border-right: 1px solid #E2E2D8;
 	min-height: 220px;
 }
  
-#panel .content .border {
-	border-left: 1px solid #333;
-}
- 
+
 #panel .content .narrow {
 	width:120px !important;
 }
@@ -121,9 +118,10 @@ background: none;
     border-width: 1px;
     margin-right: 5px;
     margin-top: 4px;
-    width: 200px;
+    width: 115px;
     color: black;
-    height: 20px
+    height: 20px;
+	background:#E8EFF5;
     }
 	
 #panel .content input.field:hover{
@@ -192,7 +190,7 @@ background: none;
 
 	height: 42px;
 	position: relative;
-	top: 0;
+	top: 5px;
 	z-index: 999;
 }
  
@@ -206,7 +204,7 @@ background: none;
   	font-weight: bold;
 	line-height: 42px;
 	margin: 0;
-	right: 100px;
+	right:-30px;
   	color: white;
   	font-size: 80%;
 	text-align: center;

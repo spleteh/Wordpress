@@ -7,6 +7,7 @@
 	<article <?php post_class() ?> id="post-<?php the_ID(); ?>">
 		<header>
 			<h2><a href="<?php the_permalink(); ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
+			<?php /*echo get_avatar(get_the_author_id() , '50'); */?>
 					</header>
 		<?php if(has_post_thumbnail()) {
 							//the_post_thumbnail();?>

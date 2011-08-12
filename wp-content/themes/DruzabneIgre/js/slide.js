@@ -7,7 +7,7 @@ $j(document).ready(function() {
 	$j("#open").click(function(){
 		$j("div#panel").slideDown("slow");	
 
-		document.getElementById('toppanel').style.background = '#272727';
+		document.getElementById('toppanel').style.background = '#FFF';
 	});	
 	
 	// Collapse Panel
@@ -79,29 +79,6 @@ $d(function($){
 		});
 	});
 
-	var $f = jQuery.noConflict();
-	
-$f(function($){
 
-		//cache nav
-		var nav = $("#comments");
-
-		//add indicators and hovers to submenu parents
-		nav.find("article").each(function() {
-		if ($(this).find("header").length > 0) {
-			
-				$(this).mouseenter(function() {
-				
-					$(this).find("header").style.background = '#272727';
-				});
-
-				//hide submenus on exit
-				$(this).mouseleave(function() {
-					console.log('mouseleave');
-					$(this).find("header").style.background = 'none';
-				});
-			}
-		});
-	});
 
 

@@ -77,7 +77,7 @@ body {
 	line-height: 1.5em; /* 24px equiv */
 	position: relative;
 	min-height:1000px;
-	background: url("images/bk_body.png") repeat-x scroll 0 0 #F0F0F0;
+	background: url("images/bk_body.jpg");
 	/*background:url(images/bk_body.jpg);*/
 }
 
@@ -86,6 +86,7 @@ header {
 }
 
 
+#topNav{background:#000;box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.2);}
 
 #wrapper{
 	margin: 0 auto;
@@ -301,11 +302,15 @@ ol.comment-list {
 	}
 ol.comment-list img.avatar {
 	margin: 8px 10px 0 0;
-	padding: 4px;
+	padding: 0px;
 	position: absolute;
 	left: 0;
 	top: 0;
-	border: 1px solid #1a1f23;
+		-moz-border-radius: 10px;
+	-khtml-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.2);
 }
 ol.comment-list li {
 	margin: 0;
@@ -765,7 +770,7 @@ article blockquote { margin-left: 0 }
 	98px  244px  390px  536px  682px  828px  974px  1120px  1266px  1412px  1558px  1704px
 */
 
-@media only screen and (min-width: 1412px) {
+@media only screen and (min-width: 1470px) {
 	
 	#wrapper {
 		padding: 64px 48px 64px;

@@ -49,7 +49,7 @@ function theme_comments($comment, $args, $depth) {
 	<li>
      <article <?php comment_class(); ?> id="comment-<?php comment_ID(); ?>">
        <header class="comment-author vcard">
-          <?php echo get_avatar($comment, '40'); ?>
+          <?php echo get_avatar($comment, '50'); ?>
           <?php printf(__('<cite class="fn">%s</cite>'), get_comment_author_link()) ?>
           <time><a href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ) ?>"><?php printf(__('%1$s %2$s'), get_comment_date(),  get_comment_time()) ?></a></time>
 
