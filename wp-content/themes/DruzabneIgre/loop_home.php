@@ -27,13 +27,13 @@ if (have_posts()) : while (have_posts()) : the_post(); ?>
 								$image_attributes = wp_get_attachment_image_src( $attachment_id ); // returns an array
 									if($image_attributes[1]<$image_attributes[2]){ ?>
 							<center>
-							<a href="<?php the_permalink() ?>" ><img src="<?php bloginfo('template_directory'); ?>/timthumb.php?src=<?php echo get_image_path($post->ID); ?>&h=255&q=100"  alt="<?php the_title(); ?>" align="top"></a>
+							<a href="<?php the_permalink() ?>" ><img src="<?php bloginfo('template_directory'); ?>/timthumb.php?src=<?php echo get_image_path($post->ID); ?>&h=240&q=100"  alt="<?php the_title(); ?>" align="top"></a>
 							<?php } else if($image_attributes[1]>$image_attributes[2]){ ?>
 							<center class="center">
-							<a href="<?php the_permalink() ?>" ><img src="<?php bloginfo('template_directory'); ?>/timthumb.php?src=<?php echo get_image_path($post->ID); ?>&w=255&q=100"  alt="<?php the_title(); ?>" align="top"></a>
+							<a href="<?php the_permalink() ?>" ><img src="<?php bloginfo('template_directory'); ?>/timthumb.php?src=<?php echo get_image_path($post->ID); ?>&w=240&q=100"  alt="<?php the_title(); ?>" align="top"></a>
 							<?php }else if($image_attributes[1]==$image_attributes[2]){ ?>
 							<center>
-							<a href="<?php the_permalink() ?>" ><img src="<?php bloginfo('template_directory'); ?>/timthumb.php?src=<?php echo get_image_path($post->ID); ?>&h=255&w=255&q=100"  alt="<?php the_title(); ?>" align="top"></a>
+							<a href="<?php the_permalink() ?>" ><img src="<?php bloginfo('template_directory'); ?>/timthumb.php?src=<?php echo get_image_path($post->ID); ?>&h=240&w=240&q=100"  alt="<?php the_title(); ?>" align="top"></a>
 						<?php }}} ?>
 						</center>
 							

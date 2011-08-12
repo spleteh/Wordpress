@@ -108,7 +108,7 @@ header {
 #main-content .postBox {
 	float:left;
 	margin:0 42px 30px 0;
-	width:290px;
+	width:260px;
 	background:url(images/box_botttom_shadow.png) 50% 100% no-repeat;
 	padding-bottom:5px;
 	position:relative;
@@ -708,7 +708,7 @@ article blockquote { margin-left: 0 }
 
 	
 	#main-content { width:1000px; margin-right:0px; float: left;}
-	#sidebar { width:300px; float: left; margin-left:2em;}
+	#sidebar { width:260px; float: left; margin-left:2em;}
 	
 	/* Turn on dropdown nav for this layout */
 
@@ -806,7 +806,7 @@ article blockquote { margin-left: 0 }
 
 /* --------------------------- */
 #most-commented {
-    width: 250px;
+    width: 230px;
 }
 
 #most-commented li {
@@ -895,9 +895,9 @@ footer .more-link{
 footer .author {
 	display:block;
 background:url(images/ico_author.png) 0 0 no-repeat;
-	padding:0 0 0 35px;
+	padding:0 0 0 22px;
 
-	margin-right:10px;
+	margin-right:4px;
 	float:left;
 
 }

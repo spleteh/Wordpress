@@ -517,7 +517,7 @@ function wpe_excerptlength_featured($length) {
     return 40;
 }
 function wpe_excerptlength_index($length) {
-    return 70;
+    return 60;
 }
 
 function wpe_excerpt($length_callback='', $more_callback='') {
