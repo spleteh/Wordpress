@@ -591,8 +591,9 @@ article .category{float:left;}
 
 article .tags{float:right;}
 
-#main-content { width:448px; margin-right:48px; float: left;}
-#sidebar { width:200px; float: left;}
+#main-content { width:428px; margin-right:10px; float: left;}
+#sidebar { width:260px; float: left;}
+
 
 #main-nav ul {width:698px; }
 
@@ -669,6 +670,34 @@ article blockquote { margin-left: 0 }
 	82px  212px   342px  472px  602px  732px  862px  992px 1122px   (48px gutters)
 */
 
+@media only screen and (min-width: 1024px) {
+	
+	#wrapper {
+		padding: 64px 48px 64px;
+		width: 955px;
+		font-size:1.2em;
+	}
+
+	
+	#main-content { width:665px; margin-right:25px; float: left;}
+	#sidebar { width:260px; float: left;}
+	
+
+	
+	#subpages { width: 150px; }
+		
+}
+
+/*--[ 9 COL LAYOUT ]--------------------------------------------------------------------------------*/
+
+
+/* 
+	9-column, 1224 px layout for desktops and laptops
+	------------------------------------------------------------------------
+	1      2      3      4      5      6      7      8      9
+	82px  212px   342px  472px  602px  732px  862px  992px 1122px   (48px gutters)
+*/
+
 @media only screen and (min-width: 1224px) {
 	
 	#wrapper {
@@ -677,9 +706,9 @@ article blockquote { margin-left: 0 }
 		font-size:1.2em;
 	}
 
-	
-	#main-content { width:732px; margin-right:48px; float: left;}
-	#sidebar { width:342px; float: left;}
+
+	#main-content { width:835px; margin-right:25px; float: left;}
+	#sidebar { width:260px; float: left;}
 	
 
 	
@@ -709,7 +738,7 @@ article blockquote { margin-left: 0 }
 	
 	#main-content { width:1110px; margin-right:0px; float: left;}
 	#sidebar { width:260px; float: left; margin-left:2em;}
-	
+
 	/* Turn on dropdown nav for this layout */
 
 	
@@ -747,6 +776,20 @@ article blockquote { margin-left: 0 }
 	
 	#subpages { width: 242px; }
 	
+}
+
+
+@media only screen and (max-width: 1024px){
+
+#main-content .postBox {width:400px;}
+
+
+}
+
+@media only screen and (max-width: 1224px){
+
+#main-content .postBox {margin: 0 70px 30px 0;}
+
 }
 
 /*--[ 2 COL LAYOUT ]--------------------------------------------------------------------------------*/
@@ -904,9 +947,8 @@ background:url(images/ico_author.png) 0 0 no-repeat;
 
 footer time {
 	display:block;
-background:url(images/ico_calendar.png) 0 0 no-repeat;
-	padding:3px 0;
-	padding-left:35px;
+	background:url(images/ico_calendar.png) 0 0 no-repeat;
+	padding:0px 0 6px 28px;
 
 	float:left;
 
@@ -979,6 +1021,23 @@ float:right;
 	background:url(images/rss1.png) 0 0 no-repeat;
 }
 
+footer .comment{
+    background: url("images/comment_bubble.png") no-repeat scroll left 0 transparent;
+    color: #FFFFFF;
+    font-size: 13px;
+    font-weight: normal;
+    height: 48px;
+    line-height: 35px;
+    overflow: hidden;
+    padding: 0;
+    float:left;
+    margin-top:-1em;  
+    text-align: center;
+    text-decoration: none;
+
+    width: 48px;
+
+}
 
 /*TEST */
 
@@ -987,6 +1046,27 @@ width:500px;}
 
 h2 a { color:#000;}
 
-.center {margin: 2.9em 0;}
 
 
+#most-commented a {
+color: #000000;
+text-shadow: 0 1px 1px rgba(1, 1, 1, 0.4);
+font-size:1em;}
+
+
+
+#copyright {
+	border-top:1px solid #1E1E1E;
+	background:#000 url(images/bk_footer.jpg) 0 0 repeat-x;
+	min-width:960px;
+}
+
+#copyrightInner {
+	width:960px;
+	margin:0 auto;
+	font-size:11px;
+	color:#515151;
+	padding:20px 0;
+	position:relative;
+	height:100px;
+}

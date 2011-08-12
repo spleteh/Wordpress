@@ -1,11 +1,18 @@
 	<?php get_sidebar(); ?>
 	</div><!-- END MAIN -->
 	<footer id="footer" role="contentinfo">
-		<nav>
-			<ul>
-				<li>&copy; <?php echo date('Y'); ?> <?php bloginfo('name'); ?></li>
-			</ul>
-		</nav>
+		
+		
+		<?php /* Widgetized sidebar */
+		if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('footer') ) : ?><?php endif; ?>
+		
+		</div>
+	</div>
+	<div id="copyright">
+		<div id="copyrightInner">
+		
+		</div>
+
 	</footer>		
 	<?php wp_footer(); ?>
 	<?php  wp_enqueue_script("jquery");  ?>

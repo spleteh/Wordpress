@@ -29,7 +29,7 @@ if (have_posts()) : while (have_posts()) : the_post(); ?>
 							<center>
 							<a href="<?php the_permalink() ?>" ><img src="<?php bloginfo('template_directory'); ?>/timthumb.php?src=<?php echo get_image_path($post->ID); ?>&h=240&q=100"  alt="<?php the_title(); ?>" align="top"></a>
 							<?php } else if($image_attributes[1]>$image_attributes[2]){ ?>
-							<center class="center">
+							<center style="<?php echo get_post_meta( $post->ID, 'margin', true ); ?>">
 							<a href="<?php the_permalink() ?>" ><img src="<?php bloginfo('template_directory'); ?>/timthumb.php?src=<?php echo get_image_path($post->ID); ?>&w=240&q=100"  alt="<?php the_title(); ?>" align="top"></a>
 							<?php }else if($image_attributes[1]==$image_attributes[2]){ ?>
 							<center>
@@ -46,7 +46,7 @@ if (have_posts()) : while (have_posts()) : the_post(); ?>
 									<ul class="post-meta">
 										<li>Število igralcev: <?php echo get_post_meta( $post->ID, 'stevilo_igralcev', true ); ?></li>
 										<li>Čas igranja: <?php echo get_post_meta( $post->ID, 'cas_igranja', true ); ?></li>
-										<li>Starost: <?php echo get_post_meta( $post->ID, 'starost', true ); ?></li>
+										<li>Starost: <?php echo get_post_meta( $post->ID, 'starost', true ); ?> +</li>
 										<li>Leto izdaje: <?php echo get_post_meta( $post->ID, 'leto_izdaje', true ); ?></li>
 										<li>Založnik:  <?php echo get_the_term_list( $post->ID, 'zaloznik', '', ',', '' ); ?></li>
 										<li>Vrsta igre: <?php echo get_the_term_list( $post->ID, 'vrsta_igre', '', ', ', '' );  ?></li>
@@ -76,8 +76,8 @@ if (have_posts()) : while (have_posts()) : the_post(); ?>
 								<div class="comments-link">
 									<?php if ( comments_open() ) : ?><a class="comment" href="<?php the_permalink(); ?>#comments"><?php comments_number('0', '1', '%'); ?></a><?php endif; ?>
 								</div>	
-								<span class="category">Posted in <?php if (function_exists('parentless_categories')) parentless_categories(','); else the_category( ', ', 'multiple' ); ?></span>
-								<?php the_tags('<span class="tags">Tagged as ', ', ', '</span>'); ?>
+								<span class="category">Objavleno pod <?php if (function_exists('parentless_categories')) parentless_categories(','); else the_category( ', ', 'multiple' ); ?></span>
+								<?php the_tags('<span class="tags">Tagi: ', ', ', '</span>'); ?>
 							</footer>
 							<?php } ?>
 							
@@ -85,7 +85,7 @@ if (have_posts()) : while (have_posts()) : the_post(); ?>
 				</div>
 			</div>
 <?php endwhile; else: ?>
-	<p><?php _e('Sorry, no posts matched your criteria.'); ?></p>
+	<p><?php _e('Oprostite, tukaj ni objav.'); ?></p>
 <?php endif; ?>
 
 <?php if (show_posts_nav()) : ?>

@@ -35,11 +35,9 @@
 	<?php wp_nav_menu( array( 'theme_location' => 'topMenu' ) ); ?>
 </nav>
 <header id="header" role="banner">
-	<?php if (is_home() || is_front_page()) : ?>
+
 		<h1 id="logo"><a href="<?php bloginfo('url'); ?>/"><?php bloginfo('name'); ?></a></h1>
-	<?php else : ?>
-		<div id="logo"><a href="<?php bloginfo('url'); ?>/"><?php bloginfo('name'); ?></a></div>			
-	<?php endif; ?>
+
 	<div id="topSearch">
 				<form id="searchform" action="<?php bloginfo('url'); ?>/" method="get">
 					<input type="submit" value="" id="searchsubmit"/>
