@@ -9,16 +9,6 @@
  * Date: 16.7.2011
  */
 
-################################################################################
-// Plugin vsebuje:
-// 				- Custom post type Družabne igre (druzabneigre)
-//				- Založnike (brez hirarhije)
-//				- jezik (brez hirarhije)
-//				- Vrsta igre (z hirarhijo)
-//				- Dodani stolpci (Družabna igra, Slika, število igralcev, Čas igranja, Starost, Leto izdaje, jezik, Založniki,	Vrsta igre,	Avtor, Komentarji, Datum)
-//				- sortiranje stolpcev
-//              - Meta Box (Osnovni podatki, Opis igre)
-################################################################################
 
 ################################################################################
 // CUSTOM POST TYPE
@@ -48,7 +38,7 @@ function register_bg() {
 		'rewrite' => false,
 		'menu_position' => 5, 
 		'has_archive' => 'resources', 
-		'supports' => array('title','comments','thumbnail','author'),
+		'supports' => array('title','comments','thumbnail','author','custom-field'),
 	);
 	register_post_type( 'druzabneigre', $args ); 
 }
@@ -140,7 +130,6 @@ function create_druzabneigre_taxonomies()
 }
 
 
-	
 
 ################################################################################
 // DODAJANJE STOLPCEV
@@ -371,6 +360,7 @@ function devpress_druzabneigre_sortable_vrste_iger_columns( $columns ) {
 	return $columns;
 }
 
+
 ################################################################################
 // DODAJANJE CUSTOM FIELDS
 ################################################################################	
@@ -380,6 +370,7 @@ add_action("admin_init", "admin_init");
 function admin_init(){
   add_meta_box("Osnovni_podatki", "Osnovni podatki", "osnovni_podatki_meta", "druzabneigre", "normal", "high");
   add_meta_box("opis_igre", "Opis igre", "opis_igre", "druzabneigre", "normal", "high");
+  add_meta_box("mnenja", "Mnenja", "mnenja", "druzabneigre", "normal", "high");
 }
  
  
@@ -418,6 +409,18 @@ function opis_igre(){
   <?php
 }
 
+function mnenja(){
+	global $post;
+	$custom = get_post_custom($post->ID);
+	$mnenje_avtorja = $custom["mnenje_avtorja"][0];
+	?>
+	<p><label>Mnenje avtorja:</label><br />
+	<textarea cols="80" rows="10" name="o_igri"><?php echo $o_igri; ?></textarea></p>
+	
+  <?php
+}
+
+
 
 add_action('save_post', 'save_details');
 function save_details(){
@@ -432,32 +435,11 @@ function save_details(){
   update_post_meta($post->ID, "vsebina_skatle", $_POST["vsebina_skatle"]);
 }
 
-################################################################################
-// FUNKCIJA ZA OZNAKE
-################################################################################
-	
-add_action('init','get_oznake');
-function get_oznake($taxonomy){
-$terms = get_the_terms( $post_id, $taxonomy );
-			if ( !empty( $terms ) ) {
-				$out = array();
-				foreach ( $terms as $term ) {
-					$out[] = sprintf( 
-						esc_html( sanitize_term_field( 'name', $term->name, $term->term_id, $taxonomy, 'display' ) )
-					);
-				}
-				echo join( ', ', $out );
-			}
-			else {
-				_e( ' ' );
-			}
-}
-
-
 add_action('init','init');
 function init(){
 // add to our plugin init function
 global $wp_rewrite;
+
 $druzabneigre_structure = '%druzabneigre%';
 $wp_rewrite->add_rewrite_tag("%druzabneigre%", '([^/]+)', "druzabneigre=");
 $wp_rewrite->add_permastruct('druzabneigre', $druzabneigre_structure, false);
@@ -527,6 +509,31 @@ function druzabneigre_permalink($permalink, $post_id, $leavename) {
 	return $permalink;
 }
 
+/*******************************
+ EXCERPT LENGTH ADJUST
+********************************/
+
+function wpe_excerptlength_featured($length) {
+    return 40;
+}
+function wpe_excerptlength_index($length) {
+    return 70;
+}
+
+function wpe_excerpt($length_callback='', $more_callback='') {
+    global $post;
+    if(function_exists($length_callback)){
+        add_filter('excerpt_length', $length_callback);
+    }
+    if(function_exists($more_callback)){
+        add_filter('excerpt_more', $more_callback);
+    }
+    $output = get_the_excerpt();
+    $output = apply_filters('wptexturize', $output);
+    $output = apply_filters('convert_chars', $output);
+    $output = '<p>'.$output.'</p>';
+    echo $output;
+}
 
 
 ?>

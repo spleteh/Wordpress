@@ -126,7 +126,7 @@ header {
 	background:#F7F9F9;
 	-moz-border-radius:8px;
     -webkit-border-radius:8px;
-	height:520px;
+	height:535px;
 	font-size:12px;
 }
 
@@ -157,15 +157,15 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {color:#3777AF;}
 .rgba h1, .rgba #logo, .rgba h2, .rgba h3, .rgba h4, .rgba h5, .rgba h6 { text-shadow: 0 1px 0 rgba(255,255,255,0.95) }
 
 h1 { font-size:2em; line-height: 1.125em; margin: 0.75em 0 0.375em 0; letter-spacing: -.05em; } /* 32px font, line height 36, margin-top 24, margin bottom 12 */
-h2 { font-size:2em; line-height: 1.125em; margin: 0.75em 0 0.375em 0; letter-spacing: -.05em; font-weight: bold; } /* 32px equiv size */
+h2 { font-size:2em; line-height: 1.125em; margin: 0.2em 0 0.375em 0; letter-spacing: -.05em; font-weight: bold; } /* 32px equiv size */
 h3 { font-size:1.625em; line-height: 1.384em; letter-spacing: -.035em; margin: 0.9231em 0 0.462em 0; } /* 26px equiv */
 h4 { font-size:1.25em; line-height: 1.2em; margin-top:1.2em; } /* 20px equiv */
 h5 { font-size:1.125em; line-height: 1.3333em; margin-top:1.3333em; } /* 18px equiv */
 h6 { font-size:0.875em; line-height: 1.7143em; margin-top:1.7143em; text-transform: uppercase; } /* 14px equiv */
 
-.druzabneigre h2 {font-size:2em; line-height: 1.125em; margin: 0.2em 0 0.375em 0; letter-spacing: -.05em; font-weight: bold; text-shadow: 0 1px 0 rgba(255,255,255,0.95);  }
+.druzabneigre h2 {color:#000; text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);}
 
-#logo {font-size:2em; line-height: 1em; margin: 1em 0 1em; padding: 0; font-weight: bold; letter-spacing: -.05em; font-family:AgentRed;width:25em;}
+
 
 p, ul, ol, dl, blockquote, hr, pre, table, fieldset, article, article footer, nav {
 	margin: 0 0 0.5em 0;
@@ -564,7 +564,32 @@ body {
 	margin: 0 0 0 2em;
 }
 
-.druzabneigre footer {margin-top:5px;border-top:1px solid #E2E2D8;}
+.druzabneigre .post-metaFull{
+	margin: 0 0 0 2em;
+	float:left;
+	width:30em;
+}
+
+
+.druzabneigre .slika{
+	float:left;
+	margin-right:1em;
+}
+
+.druzabneigre .opisIgre{
+	float:left;
+	width:100%;
+}
+
+.druzabneigre .comments {
+float:left;
+width:100%;
+}
+#main-content footer {margin-top:5px;border-top:1px solid #E2E2D8;}
+
+article .category{float:left;}
+
+article .tags{float:right;}
 
 #main-content { width:448px; margin-right:48px; float: left;}
 #sidebar { width:200px; float: left;}
@@ -628,6 +653,10 @@ position: relative;
 .paging .next { float: right; }
 article blockquote { margin-left: 0 }
 #main-content article {margin-bottom:4em;}
+
+#main-content article  {margin-bottom:4em;min-height:30em;}
+
+#main-content article header {border-bottom:1px solid #E2E2D8; margin-bottom:1em;}
 
 
 /*--[ 9 COL LAYOUT ]--------------------------------------------------------------------------------*/
@@ -728,14 +757,14 @@ article blockquote { margin-left: 0 }
 	---------------------------------------
 	1      2
 	120px  264px   (24px gutters)
-*/
+
 
 @media only screen and (max-width: 767px) {
 	
 	#wrapper {
 		padding: 48px 28px 0;
 		width: 264px;
-		font-size:1.4em; /* Set to 14 px for smart phones creating 28px vertical rhythm */
+		font-size:1.4em; 
 		line-height: 1em;
 	}
 		
@@ -746,12 +775,10 @@ article blockquote { margin-left: 0 }
 	
 	article blockquote { margin-left: 0 }
 	
-	/* Turn off dropdown nav for this layout */
-
 	
 	#subpages { width: 262px; margin-left: 0; float: none; }
 	
-}
+}*/
 
 /*--[ PRINT STYLES ]--------------------------------------------------------------------------------*/
 @media print {
@@ -868,8 +895,8 @@ footer .more-link{
 footer .author {
 	display:block;
 background:url(images/ico_author.png) 0 0 no-repeat;
-	padding:3px 0;
-	padding-left:35px;
+	padding:0 0 0 35px;
+
 	margin-right:10px;
 	float:left;
 
@@ -884,3 +911,10 @@ background:url(images/ico_calendar.png) 0 0 no-repeat;
 	float:left;
 
 }
+
+
+/*TEST */
+
+h2 a { color:#000;}
+
+.center {margin: 2.9em 0;}

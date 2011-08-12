@@ -1,11 +1,6 @@
 <?php
 /*
-Plugin Name: Hello World
-Plugin URI: http://azuliadesigns.com/
-Description: Sample Hello World Plugin
-Author: Tim Trott
-Version: 1
-Author URI: http://azuliadesigns.com/
+Plugin Name: NajboljKomentirani
 */
  
 function sampleHelloWorld()
@@ -85,4 +80,3 @@ function myHelloWorld_init()
 }
 add_action('plugins_loaded', 'myHelloWorld_init');
 ?>
- 

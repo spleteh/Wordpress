@@ -117,3 +117,4 @@ function get_image_path ($post_id = null) {
 	}
 	return $theImageSrc;
 }
+
