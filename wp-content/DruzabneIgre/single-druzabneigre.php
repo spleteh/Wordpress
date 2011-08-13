@@ -7,7 +7,6 @@
 	<article <?php post_class() ?> id="post-<?php the_ID(); ?>">
 		<header>
 			<h2><a href="<?php the_permalink(); ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
-			<?php /*echo get_avatar(get_the_author_id() , '50'); */?>
 					</header>
 		<?php if(has_post_thumbnail()) {
 							//the_post_thumbnail();?>
@@ -56,7 +55,7 @@
 								<?php echo get_post_meta( $post->ID, 'mnenje_avtorja', true ); }?>
 		
 		<footer>
-			<p><time datetime="<?php the_time('Y-m-d')?>"><?php the_time('M j, Y') ?></time> <span class="author"> Avtor: <?php /*echo get_avatar(get_the_author_id() , '50'); */?><?php the_author() ?></span> <?php if ( comments_open() ) : ?><a class="comment" href="<?php the_permalink(); ?>#comments"><?php comments_number('0', '1', '%'); ?></a><?php endif; ?></p>
+			<p><time datetime="<?php the_time('Y-m-d')?>"><?php the_time('M j, Y') ?></time> <span class="author"> <?php the_author() ?></span> <?php if ( comments_open() ) : ?><a class="comment" href="<?php the_permalink(); ?>#comments"><?php comments_number('0', '1', '%'); ?></a><?php endif; ?></p>
 
 		</footer>
 	</article>
