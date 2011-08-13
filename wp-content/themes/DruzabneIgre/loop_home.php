@@ -8,8 +8,9 @@
 					'post',
 					'druzabneigre'
 				),
-				'paged' => $paged ) // for paging links to work
+				'paged' => $paged, 'posts_per_page'=>8 ) // for paging links to work
 			);
+			
 if (have_posts()) : while (have_posts()) : the_post(); ?>
 		
 			<div class="postBox ">

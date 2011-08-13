@@ -22,6 +22,14 @@ if ( function_exists('register_sidebar') ) {
         'before_title' => '<h3 class="widget_title">',
         'after_title' => '</h3>',
 	));
+	
+	register_sidebar(array(
+	'name' => 'footer',
+	'before_widget' => '<div class="boxFooter">',
+	'after_widget' => '</div>',
+	'before_title' => '<h2>',
+	'after_title' => '</h2>',
+));
 }
 
 ################################################################################
@@ -129,3 +137,5 @@ function delete_comment_link($id) {
     echo ' | <a href="'.admin_url("comment.php?action=cdc&dt=spam&c=$id").'">Spam</a> | ';
   }
 }
+
+

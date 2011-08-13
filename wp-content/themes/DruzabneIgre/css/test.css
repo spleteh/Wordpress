@@ -4,8 +4,8 @@
 background: none;
 	position: absolute;   /*Panel will overlap  content */
 	/*position: relative;*/   /*Panel will "push" the content down */
-	top: 0;
-	right:245px;
+	right:0;
+	top:0;
 	width: 510px;
 	z-index: 999;
 	text-align: center;
@@ -491,4 +491,33 @@ nav ul ul a:hover { background-color:#555; }
 .gdsrclsmall em { font-size: 11px; }
 .gdsrclbig strong { font-size: 17px; }
 .gdsrclbig em { font-size: 14px; }
+
+
+
+
+
+
+
+
+
+
+.wp-pagenavi {
+	clear: both;
+
+}
+
+.wp-pagenavi a, .wp-pagenavi span {
+	text-decoration: none;
+	
+	padding: 3px 5px;
+	margin: 2px;
+}
+
+.wp-pagenavi a:hover, .wp-pagenavi span.current {
+	
+}
+
+.wp-pagenavi span.current {
+	font-weight: bold;
+}
 
