@@ -78,7 +78,36 @@ $d(function($){
 			}
 		});
 	});
+	
+	
+	var $g = jQuery.noConflict();
+	  $g(function() {
+   
+    var galleries = $g('.ad-gallery').adGallery();
+    $g('#switch-effect').change(
+      function() {
+        galleries[0].settings.effect = $g(this).val();
+        return false;
+      }
+    );
+    $g('#toggle-slideshow').click(
+      function() {
+        galleries[0].slideshow.toggle();
+        return false;
+      }
+    );
+    $g('#toggle-description').click(
+      function() {
+        if(!galleries[0].settings.description_wrapper) {
+          galleries[0].settings.description_wrapper = $g('#descriptions');
+        } else {
+          galleries[0].settings.description_wrapper = false;
+        }
+        return false;
+      }
+    );
+  });
 
-
+	
 
 

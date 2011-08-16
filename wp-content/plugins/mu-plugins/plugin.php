@@ -373,6 +373,7 @@ function admin_init(){
   add_meta_box("mnenja", "Mnenja", "mnenja", "druzabneigre", "normal", "high");
   add_meta_box("izgled", "Izgled", "izgled", "druzabneigre", "normal", "low");
   add_meta_box("nagrade", "Nagrade", "nagrade", "druzabneigre", "normal", "high");
+  add_meta_box("galerija", "Galerija", "galerija", "druzabneigre", "normal", "high");
   
   
 }
@@ -400,16 +401,19 @@ function osnovni_podatki_meta() {
 function opis_igre(){
 	global $post;
 	$custom = get_post_custom($post->ID);
-	$o_igri = $custom["o_igri"][0];
+	$znacilnosti_igre = $custom["znacilnosti_igre"][0];
 	$cilj_igre = $custom["cilj_igre"][0];
 	$vsebina_skatle = $custom["vsebina_skatle"][0];
+	$potek_igre = $custom["potek_igre"][0];
 	?>
-	<p><label>O igri:</label><br />
-	<textarea cols="80" rows="10" name="o_igri"><?php echo $o_igri; ?></textarea></p>
+	<p><label>Značilnosti igre:</label><br />
+	<textarea cols="80" rows="10" name="znacilnosti_igre"><?php echo $znacilnosti_igre; ?></textarea></p>
 	<p><label>Cilj igre:</label><br />
 	<textarea cols="80" rows="10" name="cilj_igre"><?php echo $cilj_igre; ?></textarea></p>
 	<p><label>Vsebina škatle:</label><br />
 	<textarea cols="80" rows="10" name="vsebina_skatle"><?php echo $vsebina_skatle; ?></textarea></p>
+	<p><label>Potek igre:</label><br />
+	<textarea cols="80" rows="10" name="potek_igre"><?php echo $potek_igre; ?></textarea></p>
   <?php
 }
 
@@ -444,19 +448,53 @@ function nagrade() {
   
   $Spiel_des_Jahres = $custom["Spiel_des_Jahres"][0];
   $Årets_Spel = $custom["Årets_Spel"][0];
-  
+  $BGG = $custom["BGG"][0];
+  $IGA = $custom["IGA"][0];
+  $Deutscher_spiele_preis = $custom["Deutscher_spiele_preis"][0];
+  $Spiel_der_Spiele = $custom["Spiel_der_Spiele"][0];
   ?>
   <p>
   <label>Spiel des Jahres</label>
-  <input name="Spiel_des_Jahres" value="<?php echo $Spiel_des_Jahres; ?>"> </p>
+  <input size="1" name="Spiel_des_Jahres" value="<?php echo $Spiel_des_Jahres; ?>"> </p>
   <p>
   <label>Årets Spel</label>
-  <input name="Årets_Spel" value="<?php echo $Årets_Spel; ?>"></p>
+  <input size="1" name="Årets_Spel" value="<?php echo $Årets_Spel; ?>"></p>
+  <label>BGG Golden Geek</label>
+  <input size="1" name="BGG" value="<?php echo $BGG; ?>"></p>
+  <label>International Gamers Awards</label>
+  <input size="1" name="IGA" value="<?php echo $IGA; ?>"></p>
+  <label>Deutscher spiele preisk</label>
+  <input size="1" name="Deutscher_spiele_preis" value="<?php echo $Deutscher_spiele_preis; ?>"></p>
+  <label>Spiel der Spiele</label>
+  <input size="1" name="Spiel_der_Spiele" value="<?php echo $Spiel_der_Spiele; ?>"></p>
+  
+
+  <?php $i=0;
+}
+
+function galerija() {
+  global $post;
+  $custom = get_post_custom($post->ID);
+  
+  $galerija = $custom["galerija"][0];
+  $mapa = $custom["mapa"][0];
+  $stSlik = $custom["stSlik"][0];
+
+  ?>
+  <p>
+  <label>Galerija</label>
+  <input size="1" name="galerija" value="<?php echo $galerija; ?>"> </p>
+  <p>
+  <label>Mapa</label>
+  <input name="mapa" value="<?php echo $mapa; ?>"></p>
+  <label>Število slik</label>
+  <input name="stSlik" value="<?php echo $stSlik; ?>"></p>
+
+  
+  
 
   <?php
 }
-
-
 
 
 add_action('save_post', 'save_details');
@@ -467,12 +505,22 @@ function save_details(){
   update_post_meta($post->ID, "stevilo_igralcev", $_POST["stevilo_igralcev"]);
   update_post_meta($post->ID, "cas_igranja", $_POST["cas_igranja"]);
   update_post_meta($post->ID, "starost", $_POST["starost"]);
-  update_post_meta($post->ID, "o_igri", $_POST["o_igri"]);
+  update_post_meta($post->ID, "znacilnosti_igre", $_POST["znacilnosti_igre"]);
   update_post_meta($post->ID, "cilj_igre", $_POST["cilj_igre"]);
   update_post_meta($post->ID, "vsebina_skatle", $_POST["vsebina_skatle"]);
+  update_post_meta($post->ID, "potek_igre", $_POST["potek_igre"]);
   update_post_meta($post->ID, "mnenje_avtorja", $_POST["mnenje_avtorja"]);
+  /*NAGRADE*/
   update_post_meta($post->ID, "Spiel_des_Jahres", $_POST["Spiel_des_Jahres"]);
   update_post_meta($post->ID, "Årets_Spel", $_POST["Årets_Spel"]);
+  update_post_meta($post->ID, "BGG", $_POST["BGG"]);
+  update_post_meta($post->ID, "IGA", $_POST["IGA"]);
+  update_post_meta($post->ID, "Deutscher_spiele_preis", $_POST["Deutscher_spiele_preis"]);
+  update_post_meta($post->ID, "Spiel_der_Spiele", $_POST["Spiel_der_Spiele"]);
+  /*GALERIJA*/
+  update_post_meta($post->ID, "galerija", $_POST["galerija"]);
+  update_post_meta($post->ID, "mapa", $_POST["mapa"]);
+  update_post_meta($post->ID, "stSlik", $_POST["stSlik"]);
   update_post_meta($post->ID, "margin", $_POST["margin"]);
 }
 

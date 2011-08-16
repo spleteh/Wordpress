@@ -16,7 +16,7 @@ $st_iger = $count_igre->publish;
 $count_comments = get_comment_count();
 $comments  = $count_comments['approved'];
 
-echo "Igre: " . $st_iger ."Objav: " .$posts . "Komentarjev: ".$comments." Povprecje: ".round($comments/$posts)." comments per post.";
+echo "Igre: " . $st_iger ."</br>Objav: " .$posts . "</br>Komentarjev: ".$comments." </br>Povprečje komentarjev: ".round($comments/$posts)." na objavo.";
 
 }
  
