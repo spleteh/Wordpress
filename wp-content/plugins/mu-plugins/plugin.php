@@ -57,17 +57,17 @@ add_action( 'init', 'create_druzabneigre_taxonomies', 0 );
 function create_druzabneigre_taxonomies() 
 {
   $labels = array(
-    'name' => _x( 'Vrsta igre', 'taxonomy general name' ),
-    'singular_name' => _x( 'Vrsta igre', 'taxonomy singular name' ),
-    'search_items' =>  __( 'Search Genres' ),
-    'all_items' => __( 'All Genres' ),
-    'parent_item' => __( 'Parent Genre' ),
-    'parent_item_colon' => __( 'Parent Genre:' ),
-    'edit_item' => __( 'Edit Genre' ), 
-    'update_item' => __( 'Update Genre' ),
-    'add_new_item' => __( 'Add New Genre' ),
-    'new_item_name' => __( 'New Genre Name' ),
-    'menu_name' => __( 'Vrsta igre' ),
+    'name' => _x( 'Kategorije', 'taxonomy general name' ),
+    'singular_name' => _x( 'Kategorija', 'taxonomy singular name' ),
+    'search_items' =>  __( 'Išči kategorijo' ),
+    'all_items' => __( 'Vse kategorije' ),
+    'parent_item' => __( 'Starš kategorije' ),
+    'parent_item_colon' => __( 'Starš kategorije:' ),
+    'edit_item' => __( 'Uredi kategorijo' ), 
+    'update_item' => __( 'Shrani kategorijo' ),
+    'add_new_item' => __( 'Dodaj novo kategorijo' ),
+    'new_item_name' => __( 'Ime nove kategorije' ),
+    'menu_name' => __( 'Kategorije' ),
   ); 	
 
   register_taxonomy('kategorija',array('druzabneigre'), array(
@@ -82,14 +82,14 @@ function create_druzabneigre_taxonomies()
     $labels = array(
     'name' => _x( 'Število igralcev', 'taxonomy general name' ),
     'singular_name' => _x( 'Število igralcev', 'taxonomy singular name' ),
-    'search_items' =>  __( 'Search Genres' ),
-    'all_items' => __( 'All Genres' ),
-    'parent_item' => __( 'Parent Genre' ),
-    'parent_item_colon' => __( 'Parent Genre:' ),
-    'edit_item' => __( 'Edit Genre' ), 
-    'update_item' => __( 'Update Genre' ),
-    'add_new_item' => __( 'Add New Genre' ),
-    'new_item_name' => __( 'New Genre Name' ),
+    'search_items' =>  __( 'Išči' ),
+    'all_items' => __( 'Vse' ),
+    'parent_item' => __( 'Parent' ),
+    'parent_item_colon' => __( 'Parent' ),
+    'edit_item' => __( 'Uredi število igralcev' ), 
+    'update_item' => __( 'Shrani število igralcev' ),
+    'add_new_item' => __( 'Dodaj novo' ),
+    'new_item_name' => __( 'Novo število igralcev' ),
     'menu_name' => __( 'Število igralcev' ),
   ); 	
 
@@ -109,18 +109,18 @@ function create_druzabneigre_taxonomies()
   $labels = array(
     'name' => _x( 'Založniki', 'taxonomy general name' ),
     'singular_name' => _x( 'Založnik', 'taxonomy singular name' ),
-    'search_items' =>  __( 'Search Writers' ),
-    'popular_items' => __( 'Popular Writers' ),
-    'all_items' => __( 'All Writers' ),
+    'search_items' =>  __( 'Išči založnika' ),
+    'popular_items' => __( 'Popularni založniki' ),
+    'all_items' => __( 'Vsi založniki' ),
     'parent_item' => null,
     'parent_item_colon' => null,
-    'edit_item' => __( 'Edit Writer' ), 
-    'update_item' => __( 'Update Writer' ),
-    'add_new_item' => __( 'Add New Writer' ),
-    'new_item_name' => __( 'New Writer Name' ),
-    'separate_items_with_commas' => __( 'Separate writers with commas' ),
-    'add_or_remove_items' => __( 'Add or remove writers' ),
-    'choose_from_most_used' => __( 'Choose from the most used writers' ),
+    'edit_item' => __( 'Uredi založnika' ), 
+    'update_item' => __( 'Shrani založnika' ),
+    'add_new_item' => __( 'Dodaj novega založnika' ),
+    'new_item_name' => __( 'Ime novega založnika' ),
+    'separate_items_with_commas' => __( 'razdelite z vejico' ),
+    'add_or_remove_items' => __( 'Dodaj ali odstrani založnika' ),
+    'choose_from_most_used' => __( 'Izberi med najbolj pogostimi založniki' ),
     'menu_name' => __( 'Založniki' ),
   ); 
 
@@ -165,18 +165,18 @@ function create_druzabneigre_taxonomies()
    $labels = array(
     'name' => _x( 'Avtorji', 'taxonomy general name' ),
     'singular_name' => _x( 'Avtor', 'taxonomy singular name' ),
-    'search_items' =>  __( 'Search Writers' ),
-    'popular_items' => __( 'Popular Writers' ),
-    'all_items' => __( 'All Writers' ),
+    'search_items' =>  __( 'Išči avtorja' ),
+    'popular_items' => __( 'Popularni avtorji' ),
+    'all_items' => __( 'Vsi avtorji' ),
     'parent_item' => null,
     'parent_item_colon' => null,
-    'edit_item' => __( 'Edit Writer' ), 
-    'update_item' => __( 'Update Writer' ),
-    'add_new_item' => __( 'Add New Writer' ),
-    'new_item_name' => __( 'New Writer Name' ),
-    'separate_items_with_commas' => __( 'Separate writers with commas' ),
-    'add_or_remove_items' => __( 'Add or remove writers' ),
-    'choose_from_most_used' => __( 'Choose from the most used writers' ),
+    'edit_item' => __( 'Uredi avtorja' ), 
+    'update_item' => __( 'Shrani avtorja' ),
+    'add_new_item' => __( 'Dodaj novega avtorja' ),
+    'new_item_name' => __( 'Ime novega avtorja' ),
+    'separate_items_with_commas' => __( 'razdelite z vejico' ),
+    'add_or_remove_items' => __( 'Dodaj ali odstrani avtorja' ),
+    'choose_from_most_used' => __( 'Izberi med najbolj pogostimi avtorji' ),
     'menu_name' => __( 'Avtorji' ),
   ); 
 
@@ -190,21 +190,21 @@ function create_druzabneigre_taxonomies()
   
    //ILUSTRATORJI----------------------------------------------------
   
-   $labels = array(
+    $labels = array(
     'name' => _x( 'Ilustratorji', 'taxonomy general name' ),
     'singular_name' => _x( 'Ilustrator', 'taxonomy singular name' ),
-    'search_items' =>  __( 'Search Writers' ),
-    'popular_items' => __( 'Popular Writers' ),
-    'all_items' => __( 'All Writers' ),
+    'search_items' =>  __( 'Išči ilustratorja' ),
+    'popular_items' => __( 'Popularni ilustratorji' ),
+    'all_items' => __( 'Vsi ilustratorji' ),
     'parent_item' => null,
     'parent_item_colon' => null,
-    'edit_item' => __( 'Edit Writer' ), 
-    'update_item' => __( 'Update Writer' ),
-    'add_new_item' => __( 'Add New Writer' ),
-    'new_item_name' => __( 'New Writer Name' ),
-    'separate_items_with_commas' => __( 'Separate writers with commas' ),
-    'add_or_remove_items' => __( 'Add or remove writers' ),
-    'choose_from_most_used' => __( 'Choose from the most used writers' ),
+    'edit_item' => __( 'Uredi ilustratorja' ), 
+    'update_item' => __( 'Shrani ilustratorja' ),
+    'add_new_item' => __( 'Dodaj novega ilustratorja' ),
+    'new_item_name' => __( 'Ime novega ilustratorja' ),
+    'separate_items_with_commas' => __( 'razdelite z vejico' ),
+    'add_or_remove_items' => __( 'Dodaj ali odstrani ilustratorja' ),
+    'choose_from_most_used' => __( 'Izberi med najbolj pogostimi ilustratorji' ),
     'menu_name' => __( 'Ilustratorji' ),
   ); 
 
@@ -506,8 +506,6 @@ function osnovni_podatki_meta() {
   $starost = $custom["starost"][0];
   $leto_izdaje = $custom["leto_izdaje"][0];
   ?>
-  <p><label>Število igralcev:</label>
-  <input name="stevilo_igralcev" value="<?php echo $stevilo_igralcev; ?>" /></p>
   <p><label>Čas igranja:</label>
   <input size="1" name="cas_igranja" value="<?php echo $cas_igranja; ?> " /> minut</p>
   <p><label>Starost:</label>
