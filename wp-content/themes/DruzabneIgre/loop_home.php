@@ -46,7 +46,7 @@ if (have_posts()) : while (have_posts()) : the_post(); ?>
 								
 
 									<ul class="post-meta">
-										<li>Število igralcev: <?php echo get_the_term_list( $post->ID, 'igralci', '', ', ', '' ); $st = str_replace("igralca","","$st");$st = str_replace("igralci","","$st");$st = str_replace("igralec","","$st");$st = str_replace("igralcev","","$st"); echo $st ?></li>
+										<li>Število igralcev: <?php echo get_the_term_list( $post->ID, 'igralci', '', ', ', '' );?></li>
 										<li>Čas igranja: <?php echo get_post_meta( $post->ID, 'cas_igranja', true ); ?> minut</li>
 										<li>Starost: <?php echo get_post_meta( $post->ID, 'starost', true ); ?> +</li>
 										<li>Leto izdaje: <?php echo get_post_meta( $post->ID, 'leto_izdaje', true ); ?></li>

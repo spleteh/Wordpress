@@ -6,6 +6,10 @@
 	<h1 class="archive-title"><?php single_cat_title(); ?></h1>
 	<?php elseif( is_tag() ) : ?>
 	<h1 class="archive-title">Posts Tagged &ldquo;<?php single_tag_title(); ?>&rdquo;</h1>
+	<?php elseif( is_tax() && !is_tax('igralci') ) : ?>
+	<h1 class="archive-title">Založnik: <?php single_tag_title(); ?></h1>
+	<?php elseif( is_tax('igralci') ) : ?>
+	<h1 class="archive-title">Število igralcev: <?php single_tag_title(); ?></h1>
 	<?php elseif (is_day()) : ?>
 	<h1 class="archive-title">Archive for <?php the_time('F jS, Y'); ?></h1>
 	<?php elseif (is_month()) : ?>

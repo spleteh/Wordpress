@@ -40,8 +40,11 @@ function register_bg() {
 		'has_archive' => 'true', 
 		'supports' => array('title','comments','thumbnail','author','custom-field'),
 	);
-	register_post_type( 'druzabneigre', $args ); 
+	register_post_type( 'druzabneigre', $args );
+	
 }
+
+
 
 ################################################################################
 // TAXONOMIES
@@ -898,5 +901,10 @@ function check_referrer() {
 
 add_action('check_comment_flood', 'check_referrer');
 
-
+function post_type_tags_fix($request) {
+    if ( isset($request['tag']) && !isset($request['post_type']) )
+    $request['post_type'] = 'any';
+    return $request;
+} 
+add_filter('request', 'post_type_tags_fix');
 ?>

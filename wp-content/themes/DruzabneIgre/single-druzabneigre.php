@@ -16,13 +16,15 @@
 						<?php } ?>
 						<h4>Osnovni podatki:</h4>
 		<ul>
-										<li>Število igralcev: <?php echo get_post_meta( $post->ID, 'stevilo_igralcev', true ); ?></li>
-										<li>Čas igranja: <?php echo get_post_meta( $post->ID, 'cas_igranja', true ); ?></li>
-										<li>Starost: <?php echo get_post_meta( $post->ID, 'starost', true ); ?></li>
+										<li>Število igralcev: <?php echo get_the_term_list( $post->ID, 'igralci', '', ', ', '' );?></li>
+										<li>Čas igranja: <?php echo get_post_meta( $post->ID, 'cas_igranja', true ); ?> minut</li>
+										<li>Starost: <?php echo get_post_meta( $post->ID, 'starost', true ); ?> +</li>
 										<li>Leto izdaje: <?php echo get_post_meta( $post->ID, 'leto_izdaje', true ); ?></li>
 										<li>Založnik:  <?php echo get_the_term_list( $post->ID, 'zaloznik', '', ',', '' ); ?></li>
-										<li>Vrsta igre: <?php echo get_the_term_list( $post->ID, 'vrsta_igre', '', ', ', '' );  ?></li>
+										<li>Vrsta igre: <?php echo get_the_term_list( $post->ID, 'kategorija', '', ', ', '' );  ?></li>
 										<li>Jezik: <?php echo get_the_term_list( $post->ID, 'jezik', '', ',', '' ); ?></li>
+										<li>Avtor: <?php echo get_the_term_list( $post->ID, 'avtor', '', ',', '' ); ?></li>
+										<li>Ilustrator: <?php echo get_the_term_list( $post->ID, 'ilustrator', '', ',', '' ); ?></li>
 									</ul>
 						
 						
