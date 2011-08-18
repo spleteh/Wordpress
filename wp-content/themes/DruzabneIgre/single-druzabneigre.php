@@ -97,6 +97,15 @@
 						
 						<?php } ?>
 						
+						<?php if(get_post_meta( $post->ID, 'youtube', true )!=''){ ?>
+						<center>
+	<object class="youtube"><param name="movie" value="<?php echo get_post_meta( $post->ID, 'youtube', true )?>">
+	<param name="allowFullScreen" value="true"><param name="allowScriptAccess" value="always">
+	<embed src="<?php echo get_post_meta( $post->ID, 'youtube', true )?>" type="application/x-shockwave-flash" allowfullscreen="true" allowScriptAccess="always" width="640" height="390">
+	</object></center> <?php } ?>
+						
+
+						
 		
 		<?php if(get_post_meta( $post->ID, 'mnenje_avtorja', true )!=''){ ?>
 		<h4>Avtorjevo mnenje</h4>

@@ -493,6 +493,7 @@ function admin_init(){
   add_meta_box("izgled", "Izgled", "izgled", "druzabneigre", "normal", "low");
   add_meta_box("nagrade", "Nagrade", "nagrade", "druzabneigre", "normal", "high");
   add_meta_box("galerija", "Galerija", "galerija", "druzabneigre", "normal", "high");
+  add_meta_box("youtube", "Youtube", "youtube", "druzabneigre", "normal", "low");
   
   
 }
@@ -506,6 +507,8 @@ function osnovni_podatki_meta() {
   $starost = $custom["starost"][0];
   $leto_izdaje = $custom["leto_izdaje"][0];
   ?>
+   <p><label>Število igralcev:</label>
+  <input name="stevilo_igralcev" value="<?php echo $stevilo_igralcev; ?> " /></p>
   <p><label>Čas igranja:</label>
   <input size="1" name="cas_igranja" value="<?php echo $cas_igranja; ?> " /> minut</p>
   <p><label>Starost:</label>
@@ -613,6 +616,20 @@ function galerija() {
   <?php
 }
 
+function youtube() {
+  global $post;
+  $custom = get_post_custom($post->ID);
+  
+  $youtube = $custom["youtube"][0];
+  
+  ?>
+  <p>
+  <label>Youtube</label>
+  <input name="youtube" value="<?php echo $youtube; ?>"> </p>
+  
+  <?php
+}
+
 
 add_action('save_post', 'save_details');
 function save_details(){
@@ -638,6 +655,8 @@ function save_details(){
   update_post_meta($post->ID, "galerija", $_POST["galerija"]);
   update_post_meta($post->ID, "mapa", $_POST["mapa"]);
   update_post_meta($post->ID, "stSlik", $_POST["stSlik"]);
+  /*YOUTUBE*/
+  update_post_meta($post->ID, "youtube", $_POST["youtube"]);
   update_post_meta($post->ID, "margin", $_POST["margin"]);
 }
 
@@ -723,7 +742,7 @@ function wpe_excerptlength_featured($length) {
     return 40;
 }
 function wpe_excerptlength_index($length) {
-    return 60;
+    return 40;
 }
 
 function wpe_excerpt($length_callback='', $more_callback='') {

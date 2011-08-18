@@ -138,13 +138,13 @@ header {
 	background:#F7F9F9;
 	-moz-border-radius:8px;
     -webkit-border-radius:8px;
-	height:535px;
+	height:450px;
 	font-size:12px;
 }
 
 #main-content  .postBoxInner:hover {
 	background:#FFF;
-	border:8px solid #FFF;
+	border:8px solid #F7F9F9;
 }
 
 #main-content article.druzabneigre {margin-bottom:4em;}
@@ -189,6 +189,7 @@ p, ul, ol, dl, blockquote, hr, pre, table, fieldset, article, article footer, na
 article ul {
 	margin: 0 0 2em 2em;
 	list-style: disc outside;
+	
 }
 
 article ol {
@@ -594,9 +595,7 @@ font-size:12px;
 .widget_tag_cloud a { line-height: 1.62em; }
 .widget_tag_cloud a:hover, .widget_tag_cloud a:focus { text-decoration: underline; }
 
-ul.children {margin-left:0.5em;font-size:90%;}
 
-li.cat-item{margin-left:1em;} 
 
 /*--[ 6 COL LAYOUT ]--------------------------------------------------------------------------------*/
 
@@ -633,8 +632,9 @@ body {
 .druzabneigre .slika{
 	float:left;
 	margin-right:2em;
-	box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.5);
+	/*box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.5);*/
 	line-height: 0;
+	min-height:15em;
 }
 
 .druzabneigre .opisIgre{

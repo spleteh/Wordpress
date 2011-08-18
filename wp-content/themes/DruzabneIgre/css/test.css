@@ -724,3 +724,11 @@ nav ul ul a:hover { background-color:#555; }
       }
 	  
 
+	  
+	  
+	  
+object.youtube{height: 390px; width: 640px;}
+
+object.youtube embed {margin:2em auto;}
+
+ul.children li.cat-item{margin-left:1em;font-size:90%;}
