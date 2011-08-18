@@ -594,6 +594,10 @@ font-size:12px;
 .widget_tag_cloud a { line-height: 1.62em; }
 .widget_tag_cloud a:hover, .widget_tag_cloud a:focus { text-decoration: underline; }
 
+ul.children {margin-left:0.5em;font-size:90%;}
+
+li.cat-item{margin-left:1em;} 
+
 /*--[ 6 COL LAYOUT ]--------------------------------------------------------------------------------*/
 
 /*
@@ -629,6 +633,8 @@ body {
 .druzabneigre .slika{
 	float:left;
 	margin-right:2em;
+	box-shadow: 5px 10px 35px rgba(0, 0, 0, 0.5);
+	line-height: 0;
 }
 
 .druzabneigre .opisIgre{

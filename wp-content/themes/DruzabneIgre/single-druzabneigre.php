@@ -11,6 +11,7 @@
 					</header>
 		<?php if(has_post_thumbnail()) {
 							//the_post_thumbnail();?>
+
 							<a class="slika" align="center" href="<?php the_permalink() ?>" ><img src="<?php bloginfo('template_directory'); ?>/timthumb.php?src=<?php echo get_image_path($post->ID); ?>&w=350&zc=1" alt="<?php the_title(); ?>"></a>
 						<?php } ?>
 						<h4>Osnovni podatki:</h4>
@@ -94,11 +95,6 @@
 						
 						<?php } ?>
 						
-						<video width="640" height="360" src="http://www.youtube.com/watch?v=17DPJHNVx2Q" autobuffer>
- <br>You must have an HTML5 capable browser.
-							</video>
-							
-		
 		
 		<?php if(get_post_meta( $post->ID, 'mnenje_avtorja', true )!=''){ ?>
 		<h4>Avtorjevo mnenje</h4>

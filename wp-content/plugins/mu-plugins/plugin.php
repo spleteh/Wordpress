@@ -37,7 +37,7 @@ function register_bg() {
 		'query_var' => true,
 		'rewrite' => false,
 		'menu_position' => 5, 
-		'has_archive' => 'resources', 
+		'has_archive' => 'true', 
 		'supports' => array('title','comments','thumbnail','author','custom-field'),
 	);
 	register_post_type( 'druzabneigre', $args ); 
@@ -67,15 +67,42 @@ function create_druzabneigre_taxonomies()
     'menu_name' => __( 'Vrsta igre' ),
   ); 	
 
-  register_taxonomy('vrsta_igre',array('druzabneigre'), array(
+  register_taxonomy('kategorija',array('druzabneigre'), array(
     'hierarchical' => true,
     'labels' => $labels,
     'show_ui' => true,
     'query_var' => true,
     'rewrite' => true
   ));
+  
+  
+    $labels = array(
+    'name' => _x( 'Število igralcev', 'taxonomy general name' ),
+    'singular_name' => _x( 'Število igralcev', 'taxonomy singular name' ),
+    'search_items' =>  __( 'Search Genres' ),
+    'all_items' => __( 'All Genres' ),
+    'parent_item' => __( 'Parent Genre' ),
+    'parent_item_colon' => __( 'Parent Genre:' ),
+    'edit_item' => __( 'Edit Genre' ), 
+    'update_item' => __( 'Update Genre' ),
+    'add_new_item' => __( 'Add New Genre' ),
+    'new_item_name' => __( 'New Genre Name' ),
+    'menu_name' => __( 'Število igralcev' ),
+  ); 	
+
+  register_taxonomy('igralci',array('druzabneigre'), array(
+    'hierarchical' => true,
+    'labels' => $labels,
+    'show_ui' => true,
+    'query_var' => true,
+    'rewrite' => true
+  ));
+  
+
 
   // Add new taxonomy, NOT hierarchical (like tags)
+  
+  // ZALOŽNIKI-------------------------------------------------------
   $labels = array(
     'name' => _x( 'Založniki', 'taxonomy general name' ),
     'singular_name' => _x( 'Založnik', 'taxonomy singular name' ),
@@ -102,6 +129,8 @@ function create_druzabneigre_taxonomies()
     'rewrite' =>true
   ));
   
+  //JEZIKI---------------------------------------------------------
+  
    $labels = array(
     'name' => _x( 'Jeziki', 'taxonomy general name' ),
     'singular_name' => _x( 'Jezik', 'taxonomy singular name' ),
@@ -127,6 +156,62 @@ function create_druzabneigre_taxonomies()
     'query_var' => true,
     'rewrite' => true
   ));
+  
+  //AVTORJI----------------------------------------------------
+  
+   $labels = array(
+    'name' => _x( 'Avtorji', 'taxonomy general name' ),
+    'singular_name' => _x( 'Avtor', 'taxonomy singular name' ),
+    'search_items' =>  __( 'Search Writers' ),
+    'popular_items' => __( 'Popular Writers' ),
+    'all_items' => __( 'All Writers' ),
+    'parent_item' => null,
+    'parent_item_colon' => null,
+    'edit_item' => __( 'Edit Writer' ), 
+    'update_item' => __( 'Update Writer' ),
+    'add_new_item' => __( 'Add New Writer' ),
+    'new_item_name' => __( 'New Writer Name' ),
+    'separate_items_with_commas' => __( 'Separate writers with commas' ),
+    'add_or_remove_items' => __( 'Add or remove writers' ),
+    'choose_from_most_used' => __( 'Choose from the most used writers' ),
+    'menu_name' => __( 'Avtorji' ),
+  ); 
+
+  register_taxonomy('avtor','druzabneigre',array(
+    'hierarchical' => false,
+    'labels' => $labels,
+    'show_ui' => true,
+    'query_var' => true,
+    'rewrite' => true
+  ));
+  
+   //ILUSTRATORJI----------------------------------------------------
+  
+   $labels = array(
+    'name' => _x( 'Ilustratorji', 'taxonomy general name' ),
+    'singular_name' => _x( 'Ilustrator', 'taxonomy singular name' ),
+    'search_items' =>  __( 'Search Writers' ),
+    'popular_items' => __( 'Popular Writers' ),
+    'all_items' => __( 'All Writers' ),
+    'parent_item' => null,
+    'parent_item_colon' => null,
+    'edit_item' => __( 'Edit Writer' ), 
+    'update_item' => __( 'Update Writer' ),
+    'add_new_item' => __( 'Add New Writer' ),
+    'new_item_name' => __( 'New Writer Name' ),
+    'separate_items_with_commas' => __( 'Separate writers with commas' ),
+    'add_or_remove_items' => __( 'Add or remove writers' ),
+    'choose_from_most_used' => __( 'Choose from the most used writers' ),
+    'menu_name' => __( 'Ilustratorji' ),
+  ); 
+
+  register_taxonomy('ilustrator','druzabneigre',array(
+    'hierarchical' => false,
+    'labels' => $labels,
+    'show_ui' => true,
+    'query_var' => true,
+    'rewrite' => true
+  ));
 }
 
 
@@ -143,14 +228,16 @@ function add_new_druzabneigre_columns($druzabneigre_columns) {
 		$new_columns['title'] = _x('Družabna igra', 'column name');
 		$new_columns['thumbnail'] = __('Slika');
 
-		$new_columns['stevilo_igralcev'] = __('Število igralcev');
+		$new_columns['igralci'] = __('Število igralcev');
 		$new_columns['cas_igranja'] = __('Čas igranja');
 		$new_columns['starost'] = __('Starost');
 		$new_columns['leto_izdaje'] = __('Leto izdaje');
 		$new_columns['jezik'] = __('jezik');
 
 		$new_columns['zaloznik'] = __('Založniki');
-		$new_columns['vrsta_igre'] = __('Vrsta igre');
+		$new_columns['avtor'] = __('Avtor');
+		$new_columns['ilustrator'] = __('Ilustrator');
+		$new_columns['kategorija'] = __('Vrsta igre');
 
 		$new_columns['author'] = __('Avtor');
 		$new_columns['comments'] = __('Komentarji');
@@ -167,13 +254,6 @@ function devpress_manage_druzabneigre_columns( $column, $post_id ) {
 
 	switch( $column ) {
 
-		case 'stevilo_igralcev' :
-			$steviloigralcev = get_post_meta( $post_id, 'stevilo_igralcev', true );
-			if ( empty( $steviloigralcev ) )
-				echo __( 'Neznano' );
-			else
-				printf( __( '%s' ), $steviloigralcev );
-			break;
 			
 		case 'cas_igranja' :
 			$casigranja = get_post_meta( $post_id, 'cas_igranja', true );
@@ -235,14 +315,32 @@ function devpress_manage_druzabneigre_columns( $column, $post_id ) {
 
 			break;	
 			
-		case 'vrsta_igre' :
-			$terms = get_the_terms( $post_id, 'vrsta_igre' );
+			case 'avtor' :
+			$terms = get_the_terms( $post_id, 'avtor' );
 			if ( !empty( $terms ) ) {
 				$out = array();
 				foreach ( $terms as $term ) {
 					$out[] = sprintf( '<a href="%s">%s</a>',
-						esc_url( add_query_arg( array( 'post_type' => $post->post_type, 'vrsta_igre' => $term->slug ), 'edit.php' ) ),
-						esc_html( sanitize_term_field( 'name', $term->name, $term->term_id, 'vrsta_igre', 'display' ) )
+						esc_url( add_query_arg( array( 'post_type' => $post->post_type, 'avtor' => $term->slug ), 'edit.php' ) ),
+						esc_html( sanitize_term_field( 'name', $term->name, $term->term_id, 'avtor', 'display' ) )
+					);
+				}
+				echo join( ', ', $out );
+			}
+			else {
+				_e( 'Brez' );
+			}
+
+			break;	
+			
+		case 'kategorija' :
+			$terms = get_the_terms( $post_id, 'kategorija' );
+			if ( !empty( $terms ) ) {
+				$out = array();
+				foreach ( $terms as $term ) {
+					$out[] = sprintf( '<a href="%s">%s</a>',
+						esc_url( add_query_arg( array( 'post_type' => $post->post_type, 'kategorija' => $term->slug ), 'edit.php' ) ),
+						esc_html( sanitize_term_field( 'name', $term->name, $term->term_id, 'kategorija', 'display' ) )
 					);
 				}
 				echo join( ', ', $out );
@@ -252,6 +350,24 @@ function devpress_manage_druzabneigre_columns( $column, $post_id ) {
 			}
 
 			break;
+			
+		case 'igralci' :
+			$terms = get_the_terms( $post_id, 'igralci' );
+			if ( !empty( $terms ) ) {
+				$out = array();
+				foreach ( $terms as $term ) {
+					$out[] = sprintf( '<a href="%s">%s</a>',
+						esc_url( add_query_arg( array( 'post_type' => $post->post_type, 'igralci' => $term->slug ), 'edit.php' ) ),
+						esc_html( sanitize_term_field( 'name', $term->name, $term->term_id, 'igralci', 'display' ) )
+					);
+				}
+				echo join( ', ', $out );
+			}
+			else {
+				_e( 'Brez' );
+			}
+
+			break;	
 
 
 		default :
@@ -304,11 +420,11 @@ function fb_AddThumbColumn($cols) {
 // SORTIRANJE
 ################################################################################	
 	
-add_filter( 'manage_edit-druzabneigre_sortable_columns', 'devpress_druzabneigre_sortable_steviloigralcev_columns' );
+add_filter( 'manage_edit-druzabneigre_sortable_columns', 'devpress_druzabneigre_sortable_igralci_columns' );
 
-function devpress_druzabneigre_sortable_steviloigralcev_columns( $columns ) {
+function devpress_druzabneigre_sortable_igralci_columns( $columns ) {
 
-	$columns['stevilo_igralcev'] = 'steviloigralcev';
+	$columns['stevilo_igralcev'] = 'igralci';
 	return $columns;
 }
 
@@ -356,7 +472,7 @@ add_filter( 'manage_edit-druzabneigre_sortable_columns', 'devpress_druzabneigre_
 
 function devpress_druzabneigre_sortable_vrste_iger_columns( $columns ) {
 
-	$columns['vrsta_igre'] = 'vrsta_igre';
+	$columns['kategorija'] = 'kategorija';
 	return $columns;
 }
 
@@ -454,19 +570,19 @@ function nagrade() {
   $Spiel_der_Spiele = $custom["Spiel_der_Spiele"][0];
   ?>
   <p>
-  <label>Spiel des Jahres</label>
-  <input size="1" name="Spiel_des_Jahres" value="<?php echo $Spiel_des_Jahres; ?>"> </p>
-  <p>
-  <label>Årets Spel</label>
-  <input size="1" name="Årets_Spel" value="<?php echo $Årets_Spel; ?>"></p>
-  <label>BGG Golden Geek</label>
-  <input size="1" name="BGG" value="<?php echo $BGG; ?>"></p>
-  <label>International Gamers Awards</label>
-  <input size="1" name="IGA" value="<?php echo $IGA; ?>"></p>
-  <label>Deutscher spiele preisk</label>
-  <input size="1" name="Deutscher_spiele_preis" value="<?php echo $Deutscher_spiele_preis; ?>"></p>
-  <label>Spiel der Spiele</label>
-  <input size="1" name="Spiel_der_Spiele" value="<?php echo $Spiel_der_Spiele; ?>"></p>
+  <label><img src="../wp-content/themes/DruzabneIgre/images/nagrade/spiel-des-jahres.png" width="64" ></label>
+  <input size="1" name="Spiel_des_Jahres" value="<?php echo $Spiel_des_Jahres; ?>"> Spiel des Jahres
+  
+  <label><img src="../wp-content/themes/DruzabneIgre/images/nagrade/Arets-Spel.png" width="64" height="64"></label>
+  <input size="1" name="Årets_Spel" value="<?php echo $Årets_Spel; ?>"> Årets Spel
+  <label><img src="../wp-content/themes/DruzabneIgre/images/nagrade/BGG.png" width="64" height="64"></label>
+  <input size="1" name="BGG" value="<?php echo $BGG; ?>"> BGG Golden Geek </p><p>
+  <label><img src="../wp-content/themes/DruzabneIgre/images/nagrade/IGA.png" width="64" height="64"></label>
+  <input size="1" name="IGA" value="<?php echo $IGA; ?>"> International Gamers Awards
+  <label><img src="../wp-content/themes/DruzabneIgre/images/nagrade/Deutscher_spiele_preis.png" width="64" height="64"></label>
+  <input size="1" name="Deutscher_spiele_preis" value="<?php echo $Deutscher_spiele_preis; ?>"> Deutscher spiele preisk
+  <label><img src="../wp-content/themes/DruzabneIgre/images/nagrade/Spiel-der-Spiele.png" width="64" height="64"></label>
+  <input size="1" name="Spiel_der_Spiele" value="<?php echo $Spiel_der_Spiele; ?>"> Spiel der Spiele</p>
   
 
   <?php $i=0;
