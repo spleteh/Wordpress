@@ -10,6 +10,7 @@
  */
 
 
+
 ################################################################################
 // CUSTOM POST TYPE
 ################################################################################
@@ -634,6 +635,7 @@ function youtube() {
 add_action('save_post', 'save_details');
 function save_details(){
   global $post;
+  global $wpdb;
  
   update_post_meta($post->ID, "leto_izdaje", $_POST["leto_izdaje"]);
   update_post_meta($post->ID, "stevilo_igralcev", $_POST["stevilo_igralcev"]);
@@ -658,6 +660,60 @@ function save_details(){
   /*YOUTUBE*/
   update_post_meta($post->ID, "youtube", $_POST["youtube"]);
   update_post_meta($post->ID, "margin", $_POST["margin"]);
+	$time = $_POST["cas_igranja"];
+	$players = $_POST["stevilo_igralcev"];
+	$year = $_POST["leto_izdaje"];
+										
+$terms = get_the_terms( $post->id, 'avtor' );						
+if ( $terms && ! is_wp_error( $terms ) ) : 
+	$draught_links = array();
+	foreach ( $terms as $term ) {
+		$draught_links[] = $term->name;
+	}						
+	$artist = join( ", ", $draught_links );
+endif; 
+
+$terms = get_the_terms( $post->id, 'zaloznik' );						
+if ( $terms && ! is_wp_error( $terms ) ) : 
+	$draught_links = array();
+	foreach ( $terms as $term ) {
+		$draught_links[] = $term->name;
+	}						
+	$publisher = join( ", ", $draught_links );
+endif; 
+
+$terms = get_the_terms( $post->id, 'ilustrator' );						
+if ( $terms && ! is_wp_error( $terms ) ) : 
+	$draught_links = array();
+	foreach ( $terms as $term ) {
+		$draught_links[] = $term->name;
+	}						
+	$designer = join( ", ", $draught_links );
+endif; 
+
+$author = $_POST["mnenje_avtorja"];
+$honors = array();
+$Spiel_des_Jahres = $_POST["Spiel_des_Jahres"];
+if($Spiel_des_Jahres!='') $honors[] = "Spiel des Jahres"; 
+$Arets_Spel = $_POST["Årets_Spel"];
+if($Arets_Spel!='') $honors[] = "Arets Spel";
+ 
+$honorss = join( ", ", $honors );
+
+
+
+/*** INSERT/UPDATE ***/
+	$lal = array('ID' =>$post->ID, 'TITLE'=> get_the_title($post->ID), 'PLAYERS'=>$players, 'TIME' => $time, 'YEAR'=> $year,'PUBLISHER'=> $publisher, 'ARTIST'=> $artist,
+				'DESIGNER'=>$designer, 'AUTHOR'=>$author, 'HONORS'=>$honorss);
+	if($wpdb->get_var("select ID from wp_boardgame where ID=" . $post->ID ) != $post->ID) {
+	$wpdb->insert(
+    'wp_boardgame',
+    $lal
+	);
+	}
+	else{
+	$where   = array('ID' => $post->ID);
+	$wpdb->update( 'wp_boardgame', $lal, $where );}
 }
 
 add_action('init','init');
@@ -924,4 +980,12 @@ function post_type_tags_fix($request) {
     return $request;
 } 
 add_filter('request', 'post_type_tags_fix');
+
+
+
+
+
+
+
+	
 ?>

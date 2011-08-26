@@ -26,6 +26,24 @@
 										<li>Avtor: <?php echo get_the_term_list( $post->ID, 'avtor', '', ',', '' ); ?></li>
 										<li>Ilustrator: <?php echo get_the_term_list( $post->ID, 'ilustrator', '', ',', '' ); ?></li>
 									</ul>
+									<?php
+									$terms = get_the_terms( $post->id, 'avtor' );
+						
+if ( $terms && ! is_wp_error( $terms ) ) : 
+
+	$draught_links = array();
+
+	foreach ( $terms as $term ) {
+		$draught_links[] = $term->name;
+	}
+						
+	$on_draught = join( ", ", $draught_links );
+?>
+<p class="beers draught">
+	On draught: <span><?php echo $on_draught; ?></span>
+</p>
+
+<?php endif; ?>
 						
 						
 						<?php if(get_post_meta( $post->ID, 'znacilnosti_igre', true )!=''){ ?>
