@@ -544,7 +544,7 @@ function mnenja(){
 	$mnenje_avtorja = $custom["mnenje_avtorja"][0];
 	?>
 	<p><label>Mnenje avtorja:</label><br />
-	<textarea cols="80" rows="10" name="mnenje_avtorja"><?php echo $mnenje_avtorja; ?></textarea></p>
+	<textarea cols="80" rows="30" name="mnenje_avtorja"><?php echo $mnenje_avtorja; ?></textarea></p>
 	
   <?php
 }

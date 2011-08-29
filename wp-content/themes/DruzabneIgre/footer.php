@@ -21,6 +21,7 @@
 	
 
 	<script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/js/jquery.ad-gallery.js"></script>
+	<script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/js/jquery.tipTip.minified.js"></script>
 	<script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/js/slide.js" type="text/javascript"></script>
   
 	

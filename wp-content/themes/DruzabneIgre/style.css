@@ -188,7 +188,7 @@ p, ul, ol, dl, blockquote, hr, pre, table, fieldset, article, article footer, na
 
 article ul {
 	margin: 0 0 2em 2em;
-	list-style: disc outside;
+	list-style: disc inside;
 	
 }
 
@@ -634,8 +634,10 @@ body {
 	margin-right:2em;
 	/*box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.5);*/
 	line-height: 0;
-	min-height:15em;
+	min-height:35em;
 }
+
+
 
 .druzabneigre .opisIgre{
 	float:left;
@@ -713,7 +715,9 @@ position: relative;
 nav.paging { margin:0;float:left;}
 .paging .prev { float: left;}
 .paging .next { float: right; }
-article blockquote { margin-left: 0 }
+article blockquote { margin-left: 0; }
+
+ul.podatki{margin-left:22em;}
 
 
 
@@ -804,6 +808,8 @@ article blockquote { margin-left: 0 }
 
 	
 	#subpages { width: 150px; }
+	
+	ul.podatki{margin-left:22em;}
 		
 }
 

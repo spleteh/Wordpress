@@ -107,6 +107,27 @@ $d(function($){
       }
     );
   });
+  
+  
+  var $p = jQuery.noConflict();
+  
+  	$p(function() {
+			$p(".meter > span").each(function() {
+				$p(this)
+					.data("origWidth", $p(this).width())
+					.width(0)
+					.animate({
+						width: $p(this).data("origWidth")
+					}, 1200);
+			});
+		});
+		
+	 var $t = jQuery.noConflict();
+	 
+	 $t(function(){
+		$t(".someClass").tipTip({keepAlive:false, fadeOut:1200, delay:200});
+		});
+  
 
 	
 
